@@ -1,0 +1,42 @@
+{% extends "personal/header.html" %}
+
+
+{% block content %}
+<form method="POST" action="">
+	{% csrf_token %}
+
+		<div class="input-group mb-3">
+			<div class="input-group-prepend mr-1">
+					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Teppan</span>
+			</div>
+			<div class="input-group-prepend">
+					{{form.teppan.errors}}
+					{{form.teppan}}
+			</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<div class="input-group-prepend mr-1">
+					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Sushi</span>
+			</div>
+			<div class="input-group-prepend float-right">
+					{{form.sushi.errors}}
+					{{form.sushi}}
+			</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<div class="input-group-prepend mr-1">
+					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Bar</span>
+			</div>
+			<div class="input-group-prepend">
+					{{form.bar.errors}}
+					{{form.bar}}
+			</div>
+		</div>
+
+		<input class="btn d-flex justify-content-center mx-auto" style="background-color:#d8111b; color:#fff; width:100px;" type="submit" value="Submit">
+
+</form>
+
+{% endblock %}

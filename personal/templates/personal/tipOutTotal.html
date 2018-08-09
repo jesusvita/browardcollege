@@ -1,0 +1,13 @@
+{% extends "personal/header.html" %}
+
+
+{% block content %}
+<h3>
+  <ul class="list-group">
+    <li class="list-group-item">Chef: ${{ tipout.teppan }}</li>
+    <li class="list-group-item">Sushi: ${{ tipout.sushi }}</li>
+    <li class="list-group-item">Bar: ${{ tipout.bar }}</li>
+    <li class="list-group-item">Busser: ${{ tipout.busser }}</li>
+  </ul>
+</h3>
+{% endblock %}
