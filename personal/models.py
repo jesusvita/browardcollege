@@ -5,6 +5,7 @@ class tipOut(models.Model):
     sushi = models.CharField(max_length=140, default='')
     bar = models.CharField(max_length=140, default='')
     busser = models.CharField(max_length=140, default='')
+    total = models.CharField(max_length=140, default='')
 
     def __str__(self):
         return str(self.id)

@@ -2,12 +2,24 @@
 
 
 {% block content %}
-<h3>
-  <ul class="list-group">
-    <li class="list-group-item">Chef: ${{ tipout.teppan }}</li>
-    <li class="list-group-item">Sushi: ${{ tipout.sushi }}</li>
-    <li class="list-group-item">Bar: ${{ tipout.bar }}</li>
-    <li class="list-group-item">Busser: ${{ tipout.busser }}</li>
-  </ul>
-</h3>
+<div class="row justify-content-center">
+  <h3>
+    <ul class="list-group">
+      <li class="list-group-item mb-1">Chef: ${{ tipout.teppan }}</li>
+      <li class="list-group-item mb-1">Sushi: ${{ tipout.sushi }}</li>
+      <li class="list-group-item mb-1">Bar: ${{ tipout.bar }}</li>
+      <li class="list-group-item mb-1">Busser: ${{ tipout.busser }}</li>
+      <li class="list-group-item">Total: ${{ tipout.total }}</li>
+    </ul>
+  </h3>
+
+
+<div class="w-100"></div>
+
+
+  <form method="POST" action="">
+    {% csrf_token %}
+    <input class="btn d-flex justify-content-center mx-auto" style="background-color:#d8111b; color:#fff; width:100px;" type="submit" value="New Tip Out">
+  </form>
+</div>
 {% endblock %}
