@@ -26,11 +26,11 @@ def add_teppan(request):
             teppan_item = form.save(commit=False)
             teppan_item.sushi = add_items(teppan_item.sushi)
             teppan_item.bar = add_items(teppan_item.bar)
-            teppan_item.busser = round((float(teppan_item.teppan)+ teppan_item.sushi + teppan_item.bar) * 0.01, 2)
+            teppan_item.busser = round(float(teppan_item.teppan) * 0.01, 2)
             teppan_item.teppan = round(float(teppan_item.teppan) * 0.085, 2)
             teppan_item.sushi = round(teppan_item.sushi * 0.075, 2)
             teppan_item.bar = round(teppan_item.bar * 0.045, 2)
-            teppan_item.total = teppan_item.busser + teppan_item.teppan + teppan_item.sushi + teppan_item.bar
+            teppan_item.total = round(teppan_item.busser + teppan_item.teppan + teppan_item.sushi + teppan_item.bar, 2)
             teppan_item.save()
             return redirect("/" + str(teppan_item.id) + "/")
     else:
