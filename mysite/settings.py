@@ -25,7 +25,7 @@ SECRET_KEY = '&5#e3t)ev(^**cq3u@g5g#dd95k3rv%v4!a76o7j&nyd(3u8-n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jesusvita.pythonanywhere.com']
 
 
 # Application definition
@@ -120,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/home/JesusVita/benihanatipout/static'
