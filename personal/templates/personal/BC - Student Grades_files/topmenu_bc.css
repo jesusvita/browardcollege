@@ -1,0 +1,102 @@
+.topnav { 
+	padding-right: 5px; 
+	text-align:right; 
+	height:17px; 
+}
+
+.topmenu
+{	
+	position: relative;
+	top: 10px;
+	padding: 0 5px;
+}
+.topmenu > li, .topmenu li.firstLevel
+{	
+	font: 13px helvetica;
+	margin: 0 1px;
+	border: 1px solid #ffffff;
+}
+.topmenu li ul
+{	
+	background-color: #015496;
+}
+.topmenu li a
+{	
+	background: url(/FCCSC/images/gradient-transparent.png) #015496 0px -2px repeat-x;
+	color: #ffffff;
+}
+.topmenu li a:hover
+{	
+	background-color: #104360;
+}
+.topmenu li a.hasChildren
+{	
+	padding-right: 20px;
+	background: url(/jacmel/images/icons/sanscons/clearbits/arrow2_e.gif) #015496 100% 2px no-repeat;
+}
+.topmenu li a.hasChildren:hover{
+	background-color: #104360;
+}
+.topmenu li ul li a
+{	
+	background-image: none;
+	width: auto;
+	background-color: #015496;
+	font-weight: normal;
+	font-size: 12px;
+	padding: 0px 5px;
+}
+.topmenu li ul li a:hover
+{	
+	background-color: #104360;
+}
+
+.topmenu li div a 
+{
+	display: inline;
+	text-decoration: underline;
+}
+.topmenu li div 
+{
+	color: #ffffff;
+	padding: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.topmenuemp li ul
+{	
+	background-color: #85001b;
+}
+.topmenuemp li a
+{	
+	background-color: #85001b;
+}
+.topmenuemp li a:hover
+{	
+	background-color: #95001b;
+}
+.topmenuemp li ul li a
+{	
+	background-color: #85001b;
+}
+.topmenuemp li a.hasChildren
+{	
+	background-color: #85001b;
+} 
+.topmenuemp li a.hasChildren:hover
+{	
+	background-color: #95001b;
+}
+.topmenuemp li ul li a:hover
+{	
+	background-color: #95001b;
+}

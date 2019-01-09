@@ -1,0 +1,315 @@
+body                  {margin-top: 0px;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;background: url(/images/background.jpg);}
+
+.frontpage            {color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif; }    
+.frontpage td         {color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}    
+.frontpage h1         {color: #000000; background-color: inherit; font: bold 13px "Verdana", "Helvetica", sans-serif;margin:0px;}
+.frontpage a:link     {background-color: inherit; text-decoration: none;}
+.frontpage a:visited  {
+	text-decoration: none;
+	background-color: inherit;
+}
+.frontpage a:hover    {color: #6699FF; background-color: inherit; text-decoration: none;}
+.frontpage form       {margin-top: 0px; margin-bottom: 0px}
+.frontpage a img      {border: none}
+.frontpageeventtime   {
+	color: #666666;
+	background-color: inherit;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-decoration: none;	
+} 
+.frontpagetitlelink a:link    {
+	color: #000000;
+	background-color: inherit;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.frontpagetitlelink a:visited {
+	color: #000000;
+	background-color: inherit;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.frontpagetitlelink a:hover   {
+	color: #6699FF;
+	background-color: inherit;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.printable            {color: #000000; background-color: inherit; font: normal 11px/13px "Verdana", "Helvetica", sans-serif;}    
+.printable h5         {color: #000000; background-color: inherit; font: normal 60px/60px Verdana, Arial, Helvetica, sans-serif;margin:0px;}
+.printable h2         {color: #000000; background-color: inherit; font: bold normal 18px/19px Verdana, Arial, Helvetica, sans-serif;margin:0px;}
+.printable p          {color: #000000; background-color: inherit; font: normal 10px/13px "Verdana", "Helvetica", sans-serif;margin-top: 0px;margin-bottom: 0px}
+.printable td         {color: #000000;background-color: inherit; font: normal 11px/13px "Verdana", "Helvetica", sans-serif;}    
+
+.reverse              {color: #FFFFFF; background-color: gray; font: normal 11px/13px Verdana, Arial, Helvetica, sans-serif;}
+.reverse td           {color: #FFFFFF; background-color: gray; font: normal 11px/13px Verdana, Arial, Helvetica, sans-serif;}
+.reverse h1           {color: #FFFFFF; background-color: gray; font: bold 13px Verdana, Arial, Helvetica, sans-serif;margin:0px;}
+.reverse a:link       {color: #FFFFFF; background-color: gray; text-decoration: none;}
+.reverse a:visited    {color: #FFFFFF; background-color: gray; text-decoration: none;}
+.reverse a:hover      {color: #FFFF00; background-color: gray; text-decoration: none;}
+
+.bccdefault           {color: #000000; background-color: inherit; font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}
+.bccdefault p         {color: #000000; background-color: inherit; font: normal 11px/16px "Verdana", "Helvetica", sans-serif; margin-top: 0px; margin-bottom: 0px;}
+.bccdefault div       {color: #000000; background-color: inherit; font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}
+.bccdefault a:link    {text-decoration: underline;}
+.bccdefault a:visited {text-decoration: underline;}
+.bccdefault a:hover   {color: #6699FF; background-color: inherit; text-decoration: underline;}
+.bccdefault td        {color: #000000; background-color: inherit; font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}    
+.bccdefault h1        {color: #000000; background-color: inherit; font: bold 13px "Verdana", "Helvetica", sans-serif;line-height:2em;margin:0px;}    
+.bccdefault h2        {color: #000000; background-color: inherit; font: bold 18px "Verdana", "Helvetica", sans-serif;margin:0px;}    
+
+.frontpageemergency           {color: #ff0000;font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+.frontpageemergency p         {color: #ff0000;font: normal 10px/12px "Verdana", "Helvetica", sans-serif; margin-top: 0px; margin-bottom: 0px;}
+.frontpageemergency div       {color: #ff0000; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+.frontpageemergency a:link    {color: #ff0000; text-decoration: none;}
+.frontpageemergency a:visited {color: #ff0000; text-decoration: none;}
+.frontpageemergency a:hover   {color: #ff0000; text-decoration: none;}
+.frontpageemergency td        {color: #ff0000; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}    
+.frontpageemergency h1        {color: #ff0000; font: bold 13px "Verdana", "Helvetica", sans-serif;line-height:2em;margin:0px;}    
+.frontpageemergency h2        {color: #ff0000; font: bold 18px "Verdana", "Helvetica", sans-serif;margin:0px;}  
+
+.homepagenews           {color: #7d7d7d;font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}
+.homepagenews p         {color: #7d7d7d;font: normal 11px/16px "Verdana", "Helvetica", sans-serif; margin-top: 0px; margin-bottom: 0px;}
+.homepagenews div       {color: #7d7d7d; font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}
+.homepagenews a:link    {color: #5b5ba6; text-decoration: underline;}
+.homepagenews a:visited {color: #7d7d7d; text-decoration: underline;}
+.homepagenews a:hover   {color: #3f3f75; text-decoration: underline;}
+.homepagenews td        {color: #7d7d7d; font: normal 11px/16px "Verdana", "Helvetica", sans-serif;}    
+.homepagenews h1        {color: #7d7d7d; font: bold 13px "Verdana", "Helvetica", sans-serif;line-height:2em;margin:0px;}    
+.homepagenews h2        {color: #7d7d7d; font: bold 18px "Verdana", "Helvetica", sans-serif;margin:0px;}  
+
+.bccsmallheadline     {color: #000000; background-color: inherit; font: bold 13px "Verdana", "Helvetica", sans-serif;margin:0px;}    
+.bcclargeheadline     {color: #000000; background-color: inherit; font: bold 18px "Verdana", "Helvetica", sans-serif;margin:0px;}    
+.bccsmall             {color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+.bccsmall p           {color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+span.bccsmall				{display:block;  color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+.bccsmall td          {color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;}
+.bccblack             {color: #000000; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;} 
+.bccgray              {color: #666666; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;}
+.bccgraylight         { color: #999999; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;} 
+.bccgreen             {color: #006600; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;} 
+.bccorange            {color: #F06000; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;} 
+.bccred               {color: #FF0000; background-color: inherit; font: bold 11px/13px "Verdana", "Helvetica", sans-serif;text-decoration: none;} 
+
+.topnav               {color: #FFFFFF; background-color: inherit; font: normal 10px/11px "Verdana", "Helvetica", sans-serif;}
+.topnav td            {color: #FFFFFF; background-color: inherit; font: normal 10px/11px "Verdana", "Helvetica", sans-serif;} 
+.topnav a:link        {color: #FFFFFF; background-color: inherit; font: normal 10px/11px "Verdana", "Helvetica", sans-serif; text-decoration: none;}
+.topnav a:visited     {color: #FFFFFF; background-color: inherit; font: normal 10px/11px "Verdana", "Helvetica", sans-serif; text-decoration: none;}
+.topnav a:hover       {color: #FFFFFF; background-color: inherit; font: normal 10px/11px "Verdana", "Helvetica", sans-serif; text-decoration: none;}
+
+.box	           	{color: inherit; background-color: #e8e8e8; font: normal 10px/11px "Verdana", "Helvetica", sans-serif; text-decoration: none;}
+.box th           	{background-color: #145178; color: #FFFFFF; }
+/* from fccsc */
+.box a:link			{color: rgb(0, 0, 153); background-color: inherit; }  /* for unvisited links */
+.box a:visited 		{color: rgb(153, 0, 153); background-color: inherit; } /* for visited links */
+.box a:active 		{color: rgb(255, 0, 102); background-color: inherit; } /* when link is clicked */
+.box a:hover 		{color: rgb(0, 96, 255); background-color: inherit; } /* when mouse is over link */
+/* for header row links*/
+a.box_th:link			{color: #5BA9E9; background-color: inherit; }  /* for unvisited links */
+a.box_th:visited 		{color: #999999; background-color: inherit; } /* for visited links */
+a.box_th:active 		{color: #ffffff; background-color: inherit; } /* when link is clicked */
+a.box_th:hover 		{color: #ffffff; background-color: inherit; } /* when mouse is over link */
+
+
+.empbox	           	{color: inherit; background-color: #e8e8e8; font: normal 10px/11px "Verdana", "Helvetica", sans-serif; text-decoration: none;}
+.empbox th           	{background-color: #7F0214; color: #FFFFFF; }
+/* from fccsc */
+.empbox a:link			{color: rgb(0, 0, 153); background-color: inherit; }  /* for unvisited links */
+.empbox a:visited 		{color: rgb(153, 0, 153); background-color: inherit; } /* for visited links */
+.empbox a:active 		{color: rgb(255, 0, 102); background-color: inherit; } /* when link is clicked */
+.empbox a:hover 		{color: rgb(0, 96, 255); background-color: inherit; } /* when mouse is over link */
+/* for header row links*/
+a.empbox_th:link			{color: #5BA9E9; background-color: inherit; }  /* for unvisited links */
+a.empbox_th:visited 		{color: #999999; background-color: inherit; } /* for visited links */
+a.empbox_th:active 		{color: #FFFFFF; background-color: inherit; } /* when link is clicked */
+a.empbox_th:hover 		{color: #FFFFFF; background-color: inherit; } /* when mouse is over link */
+
+TABLE.TableWithBlackBorderandGrayBackground {
+background-color: #e8e8e8;
+border-left: 1px solid #000000;
+border-right: 1px solid #000000;
+border-top: 1px solid #000000;
+border-bottom: 1px solid #000000;
+color: inherit;
+}
+
+TABLE.TableWithBlackBorder {
+border-left: 1px solid #000000;
+border-right: 1px solid #000000;
+border-top: 1px solid #000000;
+border-bottom: 1px solid #000000;
+}
+
+.Simulated_Button     {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 13px;font-style: normal;line-height: 16px;font-weight: bold;	color: #FFFFFF;	background-color: inherit; text-decoration: none;}
+
+.topten {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 7pt;color: #FFFFFF;background-image: url(/images/frontPageImages/grad_back06.jpg);width: 143px;white-space: normal;height: auto;position: static;overflow: visible;left: 0px;top: 0px; background-color: inherit;}
+
+#topten a:hover {
+	color: #FFFF00;
+	background-color: inherit;
+	right: 0px;
+	position: static;
+	text-indent: 0pt;}
+
+#topten a {
+	color: #FFFFFF;
+	background-color: inherit;
+	text-decoration: none;}
+	
+.ActionLinks {font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #0000FF;
+	background-color: inherit;
+	}
+.email {
+	color: #FF0000;
+	background-color: inherit;
+}
+
+.email a:link {
+	color:#0000FF;
+	background-color: inherit;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	}
+email a:hover {
+	color: #FF0000;
+	background-color: inherit;
+}
+
+.ActionLinks {
+	text-decoration: none;
+	color: #0000FF;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+
+.ActionLinks a:active {
+	text-decoration: none;
+	color: #0000FF;
+	background-color:inherit;
+}
+.ActionLinks a:link {
+	text-decoration: none;
+	color: inherit;	
+	background-color: inherit;
+}
+
+.ActionLinks a:visited {
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+}
+
+.ActionLinks a:hover {
+	color: #FF0000;
+	background-color: inherit;
+	text-decoration: none;
+}
+.CampusLinks {
+font: normal 10px/12px "Verdana", "Helvetica", sans-serif;
+text-decoration:none;
+color: #0000FF;
+background-color: inherit;
+}
+
+.CampusLinks a:link {
+font: normal 10px/12px "Verdana", "Helvetica", sans-serif;
+text-decoration:none;
+color: #0000FF;
+background-color: inherit;
+}
+
+.CampusLinks a:visited {
+text-decoration:none;
+color: #0000FF;
+background-color: inherit;
+}
+
+.CampusLinks a:hover {
+color: #6699FF;
+background-color: inherit;
+text-decoration:none;
+
+}
+
+.FeaturedAnouncement {
+color: #000000; background-color: inherit; font: normal 10px/12px "Verdana", "Helvetica", sans-serif;
+}
+
+.FeaturedAnouncement a:link {
+text-decoration:none;
+color: #0000FF;
+background-color: inherit;
+}
+
+
+.FeaturedAnouncement a:visited {
+text-decoration:none;
+color: #0000FF;
+background-color: inherit;
+}
+
+.FeaturedAnouncement a:hover {
+	text-decoration:none;
+	color: #6699FF;
+	background-color: inherit;
+}
+
+.AnouncementList {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;	
+	background-color: inherit;
+
+}
+
+
+.AnouncementList a:link {
+	color: #0000FF;
+	text-decoration: none;
+	background-color: inherit;
+}
+
+
+.AnouncementList a:visited {
+	color: #0000FF;
+	text-decoration: none;
+	background-color: inherit;
+
+}
+
+.AnouncementList a:hover {
+	color: #6699FF;
+	text-decoration: none;	
+	background-color: inherit;
+	
+}
+
+.EventEmail {
+color: #FFFF00; background-color: inherit; font: normal 11px/13px Verdana, Arial, Helvetica, sans-serif;}
+
+.Eventemail a:link {
+color: #FFFF00;
+background-color: inherit;
+text-decoration: none;
+}
+
+.EventEmail a:visited {
+color: #FFFF00;
+background-color: inherit;
+text-decoration:none }
+
+.EventEmail a:hover {
+color: #FFFFFF;
+background-color: inherit;
+text-decoration: none; }
+
+.irritant { color: #FF0000;
+            text-transform: uppercase; }

@@ -1,0 +1,215 @@
+/* Social Media Footer Icons */
+
+.headerWrap {
+	FONT-SIZE:10pt;FONT-FAMILY:Arial,Helvetica,sans-serif;COLOR:black;PADDING-BOTTOM:0;PADDING-TOP:0;PADDING-LEFT:0;MARGIN:0;PADDING-RIGHT:0;BACKGROUND-COLOR:#fff
+	
+}
+
+#mainFooterNav  {
+	margin: 0px; padding: 0px; color: black; font-family: Arial,Helvetica,sans-serif; font-size: 10pt; background-color: rgb(255, 255, 255);
+}
+
+.socialIconsText {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	color: #393939;
+}
+
+.socialIconsContainer {
+	clear: both;
+	width: 100%;
+	background: #e7e7e7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e7e7e7 0%, #b3b6b8 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#b3b6b8)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e7e7e7 0%,#b3b6b8100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e7e7e7 0%,#b3b6b8 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e7e7e7 0%,#b3b6b8 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e7e7e7 0%,#b3b6b8 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#b3b6b8',GradientType=0 ); /* IE6-9 */    
+    padding: 10px 0px 2px 0px;
+}
+
+.socialIconsContent {
+	width: 1000px;
+	min-width: 946px;
+	margin: 0 auto;
+}
+
+.socialIconsContainer UL {
+	padding: 0px;
+	margin: 0px 0px 0px 285px;
+}
+
+.socialIconsContainer UL LI {
+	float: left;
+	padding: 0px 16px 0px 0px;
+	list-style: none;
+}
+
+.clearFloat {
+	clear: both;
+}
+
+/* Footer Links */
+
+#mainFooterNav {
+	clear: both;
+	width: 100%;
+	background: #e7e7e7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #005596 0%, #003c6a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#005596), color-stop(100%,#003c6a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #005596 0%,#003c6a 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #005596 0%,#003c6a 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #005596 0%,#003c6a 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #005596 0%,#003c6a 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005596', endColorstr='#003c6a',GradientType=0 ); /* IE6-9 */    
+    padding: 18px 0px 18px 0px;	
+}
+
+#mainFooterNavContent {
+	width: 946px;
+	min-width: 946px;
+	margin: 0 auto;
+}
+
+#mainFooterNavContent UL {
+	float: left;
+	padding: 0px;
+	margin: 0px 68px 0px 0px;
+}
+
+#mainFooterNavContent UL LI {
+	list-style: none;
+}
+
+
+#mainFooterNavContent UL:last-child {
+	float: left;
+	padding: 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+#mainFooterNavContent UL LI a:link {
+	color: #FFF;
+	  text-decoration: none;
+}
+
+#mainFooterNavContent UL LI a:active {
+	color: #FFF;
+}
+
+#mainFooterNavContent UL LI a:visited {
+	color: #FFF;
+}
+
+#mainFooterNavContent UL LI a:hover {
+	color: #FF0;
+}
+
+/**/
+
+#mainFooterNavLinks {
+	padding: 30px 0px 0px 0px;
+	font-family: Verdana;
+	font-size: 9px;
+	color: #b5b5b5;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 1000px;
+}
+
+#mainFooterNavLinks a:link {
+	color: #FFF;
+}
+
+#mainFooterNavLinks a:active {
+	color: #FFF;
+}
+
+#mainFooterNavLinks a:visited {
+	color: #FFF;
+}
+
+#mainFooterNavLinks a:hover {
+	color: #FF0;
+}
+
+/* Header Mobile Link*/
+
+.newSocialMediaIcons {
+	FLOAT: left;
+	padding: 0px !important;
+	MARGIN: 0px !important;
+	WIDTH: 220px !important;
+	padding-top: 4px !important;
+	padding-bottom: 8px !important;
+}
+
+.mobileWebsitePortalBtn {
+	color: #005697 !important;
+	font-family: Tahoma !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	width: 104px !important;
+	border: 1px solid #c8c8c8 !important;
+	background: -moz-linear-gradient(top,  #fefefe 0%, #e1e1e1 100%) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#e1e1e1)) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fefefe 0%,#e1e1e1 100%) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fefefe 0%,#e1e1e1 100%) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fefefe 0%,#e1e1e1 100%) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* IE10+ */
+	background: linear-gradient(to bottom,  #fefefe 0%,#e1e1e1 100%) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e1e1e1',GradientType=0 ) url(/FCCSC/images/new-mobile-icon.png) no-repeat !important; /* IE6-9 */   
+	box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-ms-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	margin: 0px 0px 0px 4px !important;
+	background: url(/FCCSC/images/new-mobile-icon.png) no-repeat !important;
+	background-position: 85px 1px !important;
+}
+
+.s4-search INPUT.ms-sbplain {
+	border: 1px solid #c8c8c8 !important;
+	height: 22px !important;
+	width: 185px !important;
+	background-color: #FFF !important;
+	background:  #FFF !important;
+	color: #6e6e6e !important;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+
+
+
+.img {
+	
+	
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	
+}
+
+img {
+	border: 0px currentColor;
+}
+
+
+.socialIconsContainer.socialIconsContent.ul.li.a
+{
+  text-decoration: none
+}
+

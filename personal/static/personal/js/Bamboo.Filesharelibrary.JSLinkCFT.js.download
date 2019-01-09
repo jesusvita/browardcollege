@@ -1,0 +1,63 @@
+(function () {
+   
+    try
+    {
+    //   Initialize the variables for overrides objects
+    var overrideCtx = {};
+    overrideCtx.Templates = {};
+
+    //	alert("Override call worked");
+
+    //  Use BaseViewID and ListTemplateType to narrow focus/scope on 
+    //	which web parts on the page are affected
+    //	overrideCtx.BaseViewID = 1;
+    overrideCtx.ListTemplateType = 15000;
+
+    /*
+    * Using the Fields override leaves the rest of the rendering intact, but 
+    * allows control over one or more specific fields in the existing view
+    <img title="{$thisNode/@ImageStatus}"  alt="{$thisNode/@ImageStatus}" align="absmiddle" src="/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx?ImageString={$thisNode/@ImageStatus} "/>
+    */
+    overrideCtx.Templates.Fields = {
+        'Status': { 'View': CustomField },
+        'SizeStatus':{'View': CustomFileSize}
+    };
+
+    /*
+    * Register the template overrides.
+    */
+    SPClientTemplates.TemplateManager.RegisterTemplateOverrides(overrideCtx);
+    }catch(e)
+    {}
+})();
+function CustomField(ctx) {
+    // Really basic field-level conditional formatting
+    var imageLink="";
+    try {
+        if (ctx.CurrentItem.FSObjType = "1" && ctx.CurrentItem.ImageStatus == "")
+            return;
+        var statusInfo = ""
+        if (ctx.CurrentItem.Status_Info != "")
+        {
+            statusInfo = ctx.CurrentItem.Status_Info;
+        }
+        imageLink = '<img title="' + ctx.CurrentItem.ImageStatus + '" id="' + ctx.CurrentItem.ID + '_bambooStatus"  alt="' + ctx.CurrentItem.ImageStatus + '" align="absmiddle" src="/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx?ImageString=' + ctx.CurrentItem.ImageStatus + ';' + statusInfo + '"/>';
+    } catch (e)
+    { }
+    return imageLink;
+}
+function CustomFileSize(ctx) {
+    // Really basic field-level conditional formatting
+    var fileSize = "";
+    //try {
+    //    if (ctx.CurrentItem.ImageStatus == "InDocumentLibrary") {
+            
+    //    }
+    //    else {
+            fileSize = ctx.CurrentItem.Size_Original;
+       // }
+              
+    //} catch (e)
+    //{ }
+    return fileSize;
+}

@@ -4,4 +4,4 @@ from .models import tipOut
 class personalTeppan(ModelForm):
     class Meta:
         model = tipOut
-        fields = ['teppan', 'sushi', 'bar', 'tip']
+        fields = ['username', 'password']

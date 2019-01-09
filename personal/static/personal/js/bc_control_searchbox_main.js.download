@@ -1,0 +1,120 @@
+/* This file is currently associated to an HTML file of the same name and is drawing content from it.  Until the files are disassociated, you will not be able to move, delete, rename, or make any other changes to this file. */
+
+function DisplayTemplate_a2e91ca0a59247f7a405b8b06ac43bff(ctx) {
+  var ms_outHtml=[];
+  var cachePreviousTemplateData = ctx['DisplayTemplateData'];
+  ctx['DisplayTemplateData'] = new Object();
+  DisplayTemplate_a2e91ca0a59247f7a405b8b06ac43bff.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+  ctx['DisplayTemplateData']['TemplateUrl']='~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fSearch\u002fBC_Control_SearchBox_Main.js';
+  ctx['DisplayTemplateData']['TemplateType']='Control';
+  ctx['DisplayTemplateData']['TargetControlType']=['SearchBox'];
+  this.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+ms_outHtml.push('',''
+); 
+        var showQuerySuggestions = ctx.ClientControl.get_showQuerySuggestions();
+        var showNavigation = ctx.ClientControl.get_showNavigation();
+
+        var prompt = ctx.ClientControl.get_initialPrompt();
+        if ($isNull(prompt))
+        {
+            prompt = Srch.Res.sb_Prompt;
+        }
+
+        var searchBoxDivId = ctx.ClientControl.get_id() + "_sboxdiv";
+        var searchBoxId = ctx.ClientControl.get_id() + "_sbox";
+        var navButtonId = ctx.ClientControl.get_id() + "_NavButton";
+        var suggestionsListId = ctx.ClientControl.get_id() + "_AutoCompList"; 
+        var navListId = ctx.ClientControl.get_id() + "_NavDropdownList";
+        var searchBoxLinkId = ctx.ClientControl.get_id() + "_SearchLink";
+        var searchBoxProgressClass = "ms-srch-sbprogress";
+        var searchBoxPromptClass = "ms-srch-sb-prompt ms-helperText";
+
+        ctx.OnPostRender = function(rCtx) {
+            ctx.ClientControl.activate(
+                prompt, 
+                searchBoxId, 
+                searchBoxDivId, 
+                navButtonId, 
+                suggestionsListId, 
+                navListId, 
+                searchBoxLinkId, 
+                searchBoxProgressClass,
+                searchBoxPromptClass);            
+        }
+ms_outHtml.push(''
+,'        <div id="SearchBox_Main" name="Control">'
+,'            <div class="input-group" id="', $htmlEncode(searchBoxDivId) ,'">'
+,'                <input type="text" value="', $htmlEncode(ctx.ClientControl.get_currentTerm()) ,'" maxlength="2048" class="form-control" accessKey="C" title="', $htmlEncode(prompt) ,'" id="', $htmlEncode(searchBoxId) ,'" autocomplete="off" autocorrect="off" onkeypress="if (Srch.U.isEnterKey(String.fromCharCode(event.keyCode))) { $getClientControl(this).search(this.value);return Srch.U.cancelEvent(event); }" onkeydown="var ctl = $getClientControl(this);ctl.activateDefaultQuerySuggestionBehavior();" onfocus="var ctl = $getClientControl(this);ctl.hidePrompt();ctl.setBorder(true);" onblur="var ctl = $getClientControl(this);ctl.showPrompt();ctl.setBorder(false);" />'
+); 
+                var imagesUrl = GetThemedImageUrl('searchresultui.png');
+                if (showNavigation) { 
+ms_outHtml.push(''
+,'				<span class="input-group-btn">'
+,'				<button class="btn btn-default" title="', $htmlEncode(Srch.Res.sb_GoNav) ,'" id="', $htmlEncode(navButtonId) ,'" onclick="$getClientControl(this).activateDefaultNavigationBehavior();return Srch.U.cancelEvent(event);" href="javascript: {}">GO!</button>'
+,'				</span>'
+); 
+                }
+ms_outHtml.push(''
+,'				<span class="input-group-btn">'
+,'				<button class="btn btn-default" title="', $htmlEncode(Srch.Res.sb_GoSearch) ,'" id="', $htmlEncode(searchBoxLinkId) ,'" onclick="$getClientControl(this).search($get(\'', $scriptEncode(searchBoxId) ,'\').value);" href="javascript: {}">GO!</button>'
+,'				</span>'
+); 
+            if (showQuerySuggestions) { 
+ms_outHtml.push(''
+,'                <div class="ms-qSuggest-container ms-shadow" id="AutoCompContainer_System">'
+,'                    <div id="', $htmlEncode(suggestionsListId) ,'"></div>'
+,'                </div>'
+); 
+            } 
+
+            if (showNavigation) { 
+ms_outHtml.push(''
+,'                <div class="ms-qSuggest-container ms-shadow" id="NavDropdownListContainer">'
+,'                    <div id="', $htmlEncode(navListId) ,'"></div>'
+,'                </div>'
+); 
+            } 
+ms_outHtml.push(''
+,'            </div>'
+); 
+            if (ctx.ClientControl.get_showAdvancedLink()) {
+                var advancedUrl = ctx.ClientControl.get_advancedSearchPageAddress();
+                if(!$isEmptyString(advancedUrl)){ 
+ms_outHtml.push(''
+,'                    <div class="ms-srch-sb-link"><a id="AdvancedLink" href="', $urlHtmlEncode(advancedUrl) ,'">', $htmlEncode(Srch.Res.sb_AdvancedLink) ,'</a></div>'
+); 
+                }
+            }
+            if (ctx.ClientControl.get_showPreferencesLink()) {
+                var preferencesUrl = ctx.ScriptApplicationManager.get_preferencesUrl();
+                if(!$isEmptyString(preferencesUrl)){ 
+ms_outHtml.push(''
+,'                    <div class="ms-srch-sb-link"><a id="PreferencesLink" href="', $urlHtmlEncode(preferencesUrl) ,'">', $htmlEncode(Srch.Res.sb_PreferencesLink) ,'</a></div>'
+); 
+                }
+            } 
+ms_outHtml.push(''
+,'        </div>'
+,'    '
+);
+
+  ctx['DisplayTemplateData'] = cachePreviousTemplateData;
+  return ms_outHtml.join('');
+}
+function RegisterTemplate_a2e91ca0a59247f7a405b8b06ac43bff() {
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("Control_SearchBox_Main", DisplayTemplate_a2e91ca0a59247f7a405b8b06ac43bff);
+}
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fSearch\u002fBC_Control_SearchBox_Main.js", DisplayTemplate_a2e91ca0a59247f7a405b8b06ac43bff);
+}
+
+}
+RegisterTemplate_a2e91ca0a59247f7a405b8b06ac43bff();
+if (typeof(RegisterModuleInit) == "function" && typeof(Srch.U.replaceUrlTokens) == "function") {
+  RegisterModuleInit(Srch.U.replaceUrlTokens("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fSearch\u002fBC_Control_SearchBox_Main.js"), RegisterTemplate_a2e91ca0a59247f7a405b8b06ac43bff);
+}

@@ -1,0 +1,191 @@
+﻿(function () {
+    if (typeof (_spBodyOnLoadFunctions) === 'undefined' || _spBodyOnLoadFunctions === null) {
+        return;
+    }
+    _spBodyOnLoadFunctions.push(function () {
+
+        if (typeof (SPClientTemplates) === 'undefined' || SPClientTemplates === null || (typeof (APD_InAssetPicker) === 'function' && APD_InAssetPicker())) {
+            return;
+        }
+       
+        var registerOverrideToHideSocialActions = function (id) {
+            var socialactionsOverridePostRenderCtx = {};
+            socialactionsOverridePostRenderCtx.BaseViewID = 'Callout';
+            socialactionsOverridePostRenderCtx.ListTemplateType = id;
+            socialactionsOverridePostRenderCtx.Templates = {};
+            socialactionsOverridePostRenderCtx.Templates.Item = function (renderCtx) {
+                //SP.SOD.registerSod("Bamboo.FileShareLibrary.wss.resx", "/_layouts/ScriptResx.ashx?name=Bamboo.FileShareLibrary.wss&culture=" + STSHtmlEncode(Strings.STS.L_CurrentUICulture_Name));
+                return CalloutRenderCustomItemTemplate(renderCtx);
+
+            };
+            SPClientTemplates.TemplateManager.RegisterTemplateOverrides(socialactionsOverridePostRenderCtx);
+        }
+        // Hide actions for default Document Libraries
+        registerOverrideToHideSocialActions(15000);
+
+        function CalloutRenderCustomItemTemplate(renderCtx) {
+            var ret = [];
+            var isImage = IsImageType(renderCtx);
+            if (renderCtx.ListSchema.IsDocLib) {
+                if (renderCtx.CurrentItem.ImageStatus != Res.inFileShare && isImage) {
+                    ret.push(CalloutRenderCustomFilePreview(renderCtx));
+                }
+                else if (isImage == false) {
+                    ret.push(CalloutRenderCustomFilePreview(renderCtx));
+                }
+            }
+
+            ret.push(CalloutRenderLastModifiedInfo(renderCtx));
+            ret.push(CalloutRenderSharingStatus(renderCtx));
+            ret.push(CalloutRenderSourceUrl(renderCtx));
+            return ret.join('');
+        }
+
+
+        function IsImageType(renderCtx) {
+            var IsValid;
+            var b = 'bmp,gif,jpg,png,psd';
+            var formatImage = new Array();
+            formatImage = b.split(',');
+            var imageType = renderCtx.CurrentItem.File_x0020_Type;
+            imageType = imageType.toLowerCase();
+            for (i = 0; i < formatImage.length; i++) {
+                if (imageType.lastIndexOf(formatImage[i]) == -1)
+                    IsValid = false;
+                else {
+                    IsValid = true;
+                    break;
+                }
+            }
+            return IsValid;
+
+        }
+
+
+        function CalloutRenderCustomFilePreview(renderCtx) {
+            var listItem = renderCtx.CurrentItem;
+            var callout = GetCalloutFromRenderCtx(renderCtx);
+
+            if (m$.isUndefined(callout.listItemPreviewer)) {
+                callout.listItemPreviewer = filePreviewManager.createPreviewFromListItem(renderCtx, listItem);
+                AddPostRenderCallback(renderCtx, function () {
+                    callout.listItemPreviewer.onPostRender();
+                    if (callout.isOpen()) {
+                        callout.listItemPreviewer.onVisible();
+                    }
+                    callout.addEventCallback("opened", function () {
+                        callout.listItemPreviewer.onVisible();
+                    });
+                    callout.addEventCallback("closing", function () {
+                        callout.listItemPreviewer.onHidden();
+                    });
+                });
+            }
+            if (m$.isDefinedAndNotNull(callout.listItemPreviewer)) {
+                var calloutContentWidth = callout.getContentWidth();
+                var previewerWidth = callout.listItemPreviewer.getWidth() + 60;
+
+                if (previewerWidth !== null && previewerWidth > calloutContentWidth) {
+                    callout.set({
+                        contentWidth: previewerWidth
+                    });
+                }
+            }
+            var previewMarkup = callout.listItemPreviewer.getHtml();
+
+            return Callout.GenerateDefaultSection(null, previewMarkup);
+        }
+        var urlPoint;
+        function CalloutRenderSourceUrl(renderCtx) {
+            var ret = [];
+            var listItem = renderCtx.CurrentItem;
+            var calloutID = GetCalloutElementIDFromRenderCtx(renderCtx);
+            var sourceUrlID = calloutID + 'SourceUrl';
+            var isDocLib = renderCtx.ListSchema.IsDocLib === '1';
+            var fullUrl = null;
+
+            if (isDocLib) {
+                var hostUrl = getHostUrl(renderCtx.HttpRoot);
+                var fileRef = listItem.FileRef;
+
+                fullUrl = new URI(renderCtx.HttpRoot);
+                fullUrl.setPath(fileRef);
+            }
+            else {
+                fullUrl = new URI(CreateItemPropertiesTitleUrl(renderCtx, listItem, renderCtx.ListSchema));
+            }
+            var decodedFullUrl = fullUrl.getDecodedStringForDisplay();
+            var encodedFullUrl = fullUrl.getString();
+            var fullUrlForLinking = new URI(GetRedirectedHref(encodedFullUrl, renderCtx.ListSchema.DefaultItemOpen, listItem["HTML_x0020_File_x0020_Type.File_x0020_Type.mapcon"], listItem["HTML_x0020_File_x0020_Type"], listItem["serverurl.progid"], listItem["FSObjType"] == "1", true, null));
+            var dislayfullUrlForLinking = fullUrlForLinking.getString();
+            if (renderCtx.listTemplate == '15000' && listItem["ImageStatus"] != Res.indocumentlibrary) { //"File exists in File Share Library"
+                AddPostRenderCallback(renderCtx, function () {
+                    //var cctx = SP.ClientContext.get_current();
+                    //var web = ((cctx.get_web()).get_lists()).getById(renderCtx.listName).get_rootFolder();
+
+                    //var onListPropertiesQuerySucceeded = function (sender, args) {
+                    //    var listProperties = web.get_properties().get_fieldValues()['bamboofs_SettingTimerJob'];;
+                    //    if (listProperties == undefined) {
+                    //        return;
+                    //    }
+                    //    else {
+                    //        var parser = new DOMParser();
+                    //        listProperties = listProperties.replace("﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                    //        var xmlDoc = parser.parseFromString(listProperties, 'text/xml');
+                    //        xmlDoc.async = 'false';
+                    //        if (xmlDoc.getElementsByTagName('JobEntity')[0].attributes.getNamedItem('OptionEnternalFileUrl') == null)
+                    //            return;
+                    //        var propValue = xmlDoc.getElementsByTagName('JobEntity')[0].attributes.getNamedItem('OptionEnternalFileUrl').nodeValue;
+                    //        if (propValue == null || propValue == 'PointSharePointUrl')
+                    //            return;
+                    //        else {
+                    //            var ListPropertiesElement = document.getElementById(sourceUrlID);
+                    //            ListPropertiesElement.value = listItem["Full_Path_Original_Name"];
+                    //        }
+                    //    }
+                    //};
+                    //var onListPropertiesQueryFailed = function (sender, args) {
+                    //    Sys.Debug.assert(false, 'CSOM query to get last modified info failed');
+                    //};
+                    //cctx.load(web, 'Properties');
+                    //cctx.executeQueryAsync(onListPropertiesQuerySucceeded, onListPropertiesQueryFailed);
+                    try {
+                        var sourceUrl = window.location.href;
+                        var listId = ctx.listName;
+                        var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/CheckForExternalFile.ashx?List=' + listId + "&ItemId=" + listItem.ID + "&source=" + sourceUrl;
+                        jq142HW60.ajax({
+                            url: urlrequest,
+                            cache: false,
+                            complete: function (data) {
+                                if (data.responseText.length > 1) {
+                                    var ListPropertiesElement = document.getElementById(sourceUrlID);
+                                    //ListPropertiesElement.value = listItem["Full_Path_Original_Name"];
+                                    ListPropertiesElement.value = data.responseText;
+                                }
+
+                            }
+                        });
+
+                    } catch (e)
+                    { }
+                });
+            }
+            ret.push('<input id="');
+            ret.push(sourceUrlID);
+            ret.push('" value="');
+            ret.push(dislayfullUrlForLinking);
+            ret.push('" class="js-callout-location" ');
+            ret.push('onclick="javascript: this.defaultValue= this.value;  this.select();" ');
+            ret.push('onblur="javascript: this.value = this.defaultValue;" ');
+            ret.push('/>');
+
+            var sourceUrlInfoMarkup = ret.join('');
+
+            return Callout.GenerateDefaultSection(null, sourceUrlInfoMarkup);
+        }
+
+    }
+
+
+	);
+})();

@@ -1,0 +1,2874 @@
+﻿/// <reference name="MicrosoftAjax.js" />
+/// <reference path="file://C:/Program Files/Common Files/Microsoft Shared/Web Server Extensions/14/TEMPLATE/LAYOUTS/SP.core.debug.js" />
+/// <reference path="file://C:/Program Files/Common Files/Microsoft Shared/Web Server Extensions/14/TEMPLATE/LAYOUTS/SP.debug.js" />
+/// <reference path="file://C:/Program Files/Common Files/Microsoft Shared/Web Server Extensions/14/TEMPLATE/LAYOUTS/Bamboo.FileShareLibrary/jquery-1.4.2.js" />
+
+//
+
+//function CheckOutSingleItem(ctx, tab) {
+//    ULSfCf: ;
+//    ctx = FixupCtx(ctx);
+//    var strUrl = GetAttributeFromItemTable(tab, "Url", "ServerUrl");
+//    var rg = GetAttributeFromItemTable(tab, "Icon", "DocIcon").split("|");
+//    var strOpenCtrl = null;
+//    if (rg.length >= 3)
+//        strOpenCtrl = rg[2];
+//    if (strOpenCtrl == "SharePoint.OpenDocuments")
+//        strOpenCtrl = "SharePoint.OpenDocuments.3";
+//    var nid = addNotification(L_Notification_CheckOut, true, null, null, true);
+//    var promptResult = CheckoutDocument(ctx.HttpRoot, strUrl, strOpenCtrl);
+//    if (!promptResult)
+//        removeNotification(nid, true);
+//}
+//ExecuteOrDelayUntilScriptLoaded(Custom_AddListMenuItems, "sp.js");
+//ExecuteOrDelayUntilScriptLoaded(LicenseStatus, "SP.js");
+//NotifyEventAndExecuteWaitingJobs(LicenseStatus);
+
+
+//var L_Edit_Text = "Edit";
+//var L_ViewItem_Text = "View Item";
+//var L_EditItem_Text = "Edit Item";
+//var L_EditSeriesItem_Text = "Edit Series";
+//var L_DeleteItem_Text = "Delete Item";
+//var L_DeleteDocItem_Text = "Delete";
+//var L_ViewProperties_Text = "View Properties";
+//var L_EditProperties_Text = "Edit Properties";
+//var L_ViewResponse_Text = "View Response";
+//var L_EditResponse_Text = "Edit Response";
+//var L_DeleteResponse_Text = "Delete Response";
+//var L_Subscribe_Text = "Alert Me";
+//var L_CustomizeNewButton_Text = "Change New Button Order";
+//var L_Review_Text = "Send for Review";
+//var L_EditIn_Text = "Edit in ^1";
+//var L_EditInApplication_Text = "Edit Document"
+//var L_Checkin_Text = "Check In";
+//var L_Checkout_Text = "Check Out";
+//var L_DiscardCheckou_Text = "Discard Check Out";
+//var L_CreateDWS_Text = "Create Document Workspace";
+//var L_PublishBack_Text = "Publish to Source Location";
+//var L_Versions_Text = "Version History";
+//var L_WorkOffline_Text = "Outlook";
+//var L_Reply_Text = "Reply";
+//var L_ExportContact_Text = "Export Contact";
+//var L_ExportEvent_Text = "Export Event";
+//var L_Reschedule_Text = "Rescheduling Options";
+//var L_Move_Text = "Move";
+//var L_Keep_Text = "Keep";
+//var L_Delete_Text = "Delete";
+//var L_Open_Text = "Open";
+//var L_SiteSettings_Text = "Change Site Settings";
+//var L_ManageUsers_Text = "Manage Users";
+//var L_DeleteSite_Text = "Delete Site";
+//var L_SiteStorage_Text = "Manage Site Storage";
+//var L_MngPerms_Text = "Manage Permissions";
+//var L_Settings_Text = "Settings";
+//var L_Remove_Text = "Remove from this list";
+//var L_ModerateItem_Text = "Approve/Reject";
+//var L_PublishItem_Text = "Publish a Major Version";
+//var L_CancelPublish_Text = "Cancel Approval";
+//var L_UnPublishItem_Text = "Unpublish this version";
+//var L_DownloadOriginal_Text = "Download Picture";
+//var L_EditVersion_Text = "Edit";
+//var L_EditInOIS_Text = "Edit Picture";
+//var L_Workflows_Text = "Workflows";
+//var L_OpenMenu_Text = "Open Menu";
+//var L_Send_Text = "Send To";
+//var L_ExistingCopies_Text = "Existing Copies";
+//var L_OtherLocation_Text = "Other Location";
+//var L_GoToSourceItem_Text = "Go to Source Item";
+//var L_NotifyThisIsCopy_Text = "This item was copied from another location and may be receiving updates from there.  You should make sure that the source stops sending updates or this item may get recreated.\n\n";
+//var L_SendToEmail_Text = "E-mail a Link";
+//var L_DownloadACopy_Text = "Download a Copy";
+//var L_DocTran_Text = "Convert Document";
+//var L_AddToMyLinks_Text = "Add to My Links";
+//var L_AddToCategory_Text = "Submit to Portal Area";
+//var L_VS_DownArrow_Text = "Select a View";
+//var L_ModifyView = "Modify this view";
+//var L_CreateView = "Create a new view";
+//var L_SubmitFileCopyWarning_Text = "Are you sure you want to copy this document to ^1?"
+//var L_SubmitFileMoveWarning_Text = "Are you sure you want to move this document to ^1?"
+//var L_SubmitFileLinkWarning_Text = "Are you sure you want to move this document to ^1? A link will be created to the destination document."
+
+var messageBB;
+var color;
+function ReferrenceAnotherFile(jsFile) {
+    //_layouts/AddNavigationLinkDialog.aspx
+    //_layouts/AssetPortalBrowser.aspx
+    //_layouts/AreaNavigationSettings.aspx
+    if (document.location.href.indexOf("AreaNavigationSettings.aspx") < 0 &&
+ document.location.href.indexOf("_layouts/AssetPortalBrowser.aspx") < 0 &&
+ document.location.href.indexOf("_layouts/AreaNavigationSettings.aspx") < 0) {
+        //document.write('<script type="text/javascript" src="/_layouts/bamboo.filesharelibrary/' + jsFile + '"></' + 'script>');
+        document.write('<script type="text/javascript" src="/_layouts/bamboo.filesharelibrary/' + jsFile + '"></' + 'script>');
+        //document.write('<script type="text/javascript" src="/_layouts/Bamboo.videolibrary/' + jsFile + '"></' + 'script><script type="text/javascript">var jq142HW69 = jQuery.noConflict(true); </' + 'script>');
+    }
+}
+(function () {
+    try {
+        document.write('<script type="text/javascript" src="/_layouts/ScriptResx.ashx?culture=en-US&name=Bamboo.FileShareLibrary.wss"></script>');
+        ReferrenceAnotherFile("jquery_1_4_2.js");
+        ReferrenceAnotherFile("Bamboo.ReplaceNewItem.js");
+        ReferrenceAnotherFile("Bamboo.Filesharelibrary.JSLinkCFT.js");
+        ReferrenceAnotherFile("BambooCalloutCustom.js");
+        ReferrenceAnotherFile("Bamboo.FileShare.DispForm.js");
+        //ReferrenceAnotherFile("BambooHiddenVersioning.js");
+        var versionning = document.getElementById("ctl00_PlaceHolderMain_ctl09_RptControls_onetidListEdit1");
+        if (versionning == null)
+            versionning = document.getElementById("ctl00_PlaceHolderMain_ctl08_RptControls_onetidListEdit1");
+        var mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl09_ctl01_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+        if (mySetting == null) {
+            mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl08_ctl01_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            if (mySetting == null)
+                mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl09_ctl00_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            if (mySetting == null)
+                mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl08_ctl00_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+        }
+
+        if (versionning != null && mySetting != null) {
+            versionning.style.display = "none";
+            versionning.parentElement.parentElement.style.display = "none";
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+})();
+
+function Bamboo_DeleteItems(siteUrl, idList, source) {
+    Custom_DeleteSelectedItems(ctx);
+}
+var havePermission;
+function CheckPermissionUser(permissionKind) {
+    var clientContext = new SP.ClientContext.get_current();
+    var web = clientContext.get_web();
+    var bRes;
+    // var permission = false;
+    //if (havePermission == true) return;
+    clientContext.load(web);
+    clientContext.executeQueryAsync(
+		function () {
+
+		    var spPerm = new SP.BasePermissions();
+		    spPerm.set(permissionKind);
+		    bRes = web.doesUserHavePermissions(spPerm);
+		    clientContext.executeQueryAsync(
+		function () {
+		    if (bRes.get_value() == "true")
+		        havePermission = true;
+		    else havePermission = false;
+		}, function () { havePermission = false; });
+		    //alert(bRes.get_value());
+		},
+        function () {
+            havePermission = false;
+        }
+        );
+
+    //return havePermission;
+}
+
+
+function EnableButtonDeleteItems() {
+    //var havePermission = false;
+    var per;
+    //CheckPermissionUser(SP.PermissionKind.deleteListItems);
+
+    var items = GetSelectedItemsDict(ctx);
+    var ci = CountDictionary(items);
+    return (ci > 0);
+
+}
+function Custom_DeleteSelectedItems(ctx) {
+    ULSfCf:;
+    ctx = FixupCtx(ctx);
+    var clvp = ctx.clvp;
+    Sys.Debug.assert(clvp.tab.parentNode != null, "clvp.tab.parentNode !=null");
+    var items = GetSelectedItemsDict(ctx);
+    var ci = CountDictionary(items);
+    if (ci > 0) {
+        if (ContainsRecurrenceItem(items))
+            return;
+        var strConfirmMessage;
+        if (typeof (L_STSRecycleConfirm_Text) != "undefined" && L_STSRecycleConfirm_Text != null) {
+            strConfirmMessage = L_STSRecycleConfirm_Text;
+        } else {
+            strConfirmMessage = Strings.STS.L_STSRecycleConfirm_Text;
+        }
+        if (!ctx.RecycleBinEnabled || ctx.ExternalDataList) {
+            if (typeof (L_STSDelConfirm_Text) != "undefined" && L_STSDelConfirm_Text != null) {
+                strConfirmMessage = L_STSDelConfirm_Text;
+            } else {
+                strConfirmMessage = Strings.STS.L_STSDelConfirm_Text;
+            }
+        }
+        if (ctx.HasRelatedCascadeLists && ctx.CascadeDeleteWarningMessage != null)
+            strConfirmMessage = ctx.CascadeDeleteWarningMessage + strConfirmMessage;
+        if (!confirm(strConfirmMessage))
+            return;
+    }
+    var k
+    for (k in items) {
+        var itm = items[k];
+        if (itm.fsObjType == "1") {
+            BB60_DeletingFolder("", false, itm.id, itm.fsObjType, "", false);
+        }
+        clvp.DeleteItemCore(itm.id, itm.fsObjType, false);
+
+    }
+    clvp.pendingItems = [];
+    if (ci > 0) {
+        var noti;
+        if (typeof (L_Notification_Delete) != "undefined" && L_Notification_Delete != null) {
+            noti = L_Notification_Delete;
+        } else {
+            noti = Strings.STS.L_Notification_Delete;
+        }
+        var nid = addNotification(noti, true);
+        clvp.cctx.executeQueryAsync(
+		function () {
+		    ULSfCf:;
+		    if (typeof (clvp.rgehs) != "undefined") {
+		        if (clvp.rgehs.length == 1 &&
+					clvp.rgehs[0].get_serverErrorCode() == SP.ClientErrorCodes.redirect) {
+		            GoToPage(clvp.rgehs[0].get_serverErrorValue());
+		            return;
+		        }
+		        removeNotification(nid);
+		        clvp.ShowErrorDialog(RefreshOnDialogClose);
+		    }
+		    else
+		        RefreshPage(SP.UI.DialogResult.OK);
+		},
+		function () {
+		    ULSfCf:;
+		    removeNotification(nid);
+		    if (typeof (clvp.rgehs) != "undefined")
+		        clvp.ShowErrorDialog();
+		});
+    }
+}
+function ShowMessage() {
+    try {
+
+        var colorMessage = messageBB.indexOf('1:') == 0 ? "red" : "blue";
+        messageBB = messageBB.substring(2)
+        var statusId = SP.UI.Status.addStatus(messageBB);
+        SP.UI.Status.setStatusPriColor(statusId, colorMessage); //Blue;green
+        if (SP.ClientSchemaVersions.currentVersion == "15.0.0.0") {
+            jq142HW60('img.ms-status-iconImg').attr("src", "/_layouts/images/Bamboo.FileShareLibrary/iconMessage.png");
+            jq142HW60('img.ms-status-iconImg').removeClass("ms-status-iconImg");
+        }
+    } catch (e)
+    { }
+}
+var statusId = '';
+function MarkFileForImportRibbon(listId) {
+    //    try {
+    //        debugger;
+    //        var items = SP.ListOperation.Selection.getSelectedItems();
+    //        var ci = CountDictionary(items);
+    //        if (ci == 0) return false;
+
+    //        var clientContext = new SP.ClientContext.get_current();
+    //        var idList = SP.ListOperation.Selection.getSelectedList();
+    //        var oWebsite = clientContext.get_web();
+
+    //        clientContext.executeQueryAsync(Function.createDelegate(this, this.MarfilesImportSuccessfull), Function.createDelegate(this, this.MarfilesImportFail));
+    //    }
+    //    catch (e) {
+    //        alert(e);
+    //    }
+    try {
+        //debugger;
+
+        if (statusId != '') {
+            SP.UI.Notify.removeNotification(statusId);
+            statusId = SP.UI.Notify.addNotification("Importing Files...", false, "", null);
+            return;
+        }
+        statusId = SP.UI.Notify.addNotification("Importing Files...", false, "", null);
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+        var idItemMarkFiles = "";
+        var idFolderMarkfiles = "";
+        for (itemIndex = 0; itemIndex < ci; itemIndex++) {
+            var itemMarkFile = items[itemIndex];
+            if (itemMarkFile.fsObjType == "0")// fsObjType==0: file; fsObjType=1: folder
+            {
+                idItemMarkFiles += itemMarkFile.id + ";";
+            }
+            else {
+                idFolderMarkfiles += itemMarkFile.id + ";";
+            }
+        }
+        if (idItemMarkFiles.length > 0)
+            ImportContentToFiles(idItemMarkFiles, idFolderMarkfiles.length);
+
+        if (idFolderMarkfiles.length > 0) {
+            MarkFilesToFolder(idFolderMarkfiles);
+        }
+    }
+    catch (e)
+    { }
+
+}
+function MarfilesImportSuccessfull(sender, args) {
+    try {
+        //debugger;
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+        var idItemMarkFiles = "";
+        var idFolderMarkfiles = "";
+        for (itemIndex = 0; itemIndex < ci; itemIndex++) {
+            var itemMarkFile = items[itemIndex];
+            if (itemMarkFile.fsObjType == "0")// fsObjType==0: file; fsObjType=1: folder
+            {
+                idItemMarkFiles += itemMarkFile.id + ";";
+            }
+            else {
+                idFolderMarkfiles += itemMarkFile.id + ";";
+            }
+        }
+        if (idItemMarkFiles.length > 0)
+            ImportContentToFiles(idItemMarkFiles, idFolderMarkfiles.length);
+
+        if (idFolderMarkfiles.length > 0) {
+            MarkFilesToFolder(idFolderMarkfiles);
+        }
+    }
+    catch (e)
+    { }
+}
+
+function MarfilesImportFail(sender, args) {
+    alert('Request failed. ' + args.get_message() +
+        '\n' + args.get_stackTrace());
+}
+
+function ImportContentToFiles(idlistItems, CountFolder) {
+    try {
+        //debugger;
+        var sourceUrl = window.location.href;
+        var RootFolder = GetRootFolder(ctx);
+        //var strUrl = getExtractlyUrlOfDocFile(RootFolder, ctx.HttpRoot);
+
+        var listId = ctx.listName;
+        var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/RibbonMarkFile.ashx?ListId=' + listId + RootFolder + "&idItems=" + idlistItems + "&CountFolder=" + CountFolder;
+        jq142HW60.ajax({
+            url: urlrequest,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 1) {
+                    if (data.responseText.indexOf(",") < 0) {
+                        var items = SP.ListOperation.Selection.getSelectedItems();
+                        var ci = CountDictionary(items);
+                        if (ci == 1)
+                            alert('Can not mark import file:' + data.responseText);
+                    }
+                    OnRefreshPage(sourceUrl);
+                }
+                OnRefreshPage(sourceUrl);
+            }
+        });
+
+    } catch (e)
+    { }
+}
+
+function MarkFilesToFolder(idFolders) {
+    try {
+        //debugger;
+        var sourceUrl = window.location.href;
+        var RootFolder = GetRootFolder(ctx);
+        //var strUrl = getExtractlyUrlOfDocFile(RootFolder, ctx.HttpRoot);
+
+        var listId = ctx.listName;
+        var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/MarkFilesInFolder.ashx?ListId=' + listId + RootFolder + "&idFolders=" + idFolders;
+        jq142HW60.ajax({
+            url: urlrequest,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 0) {
+                    if (data.responseText.indexOf(",") < 0) {
+                        alert(data.responseText);
+                    }
+                    window.location.href = sourceUrl;
+                }
+                window.location.href = sourceUrl;
+            }
+        });
+
+    } catch (e)
+    { }
+}
+var NewcurrentItemID;
+var NewcurrentItemFSObjType;
+//Custom ECB Menu
+function Custom_AddDocLibMenuItems(m, ctx) {
+    if (ctx.listTemplate != '11111' && ctx.listTemplate != '15000') {
+        return false;
+    }
+    var RootFolder = GetRootFolder(ctx);
+    var menuOption;
+    AddSharedNamespaceMenuItems(m, ctx);
+    CAMSep(m);
+    var currentItemEscapedFileUrl;
+    if (currentItemFileUrl != null)
+        currentItemEscapedFileUrl = escapeProperly(unescapeProperly(currentItemFileUrl));
+    var serverFileRedirect = itemTable.getAttribute("SRed");
+    var systemCheckout = ((currentItemCheckedOutUserId == SYSTEM_ACCOUNT_ID) && (ctx.CurrentUserId != SYSTEM_ACCOUNT_ID));
+    if (HasRights(0x0, 0x4) && HasRights(0x10, 0x0)
+		  && !systemCheckout
+		  && (serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20))
+		  ) {
+        if (ctx.isWebEditorPreview == 0 && ctx.listBaseType == 1) {
+            if (ctx.listTemplate == 109 && itemTable.getAttribute("IsImage") == "1") {
+                if (currentItemFSObjType != 1) {
+                    if (typeof (L_EditInOIS_Text) != "undefined" && L_EditInOIS_Text != null) {
+                        strDisplayText = L_EditInOIS_Text;
+                    } else {
+                        strDisplayText = Strings.STS.L_EditInOIS_Text;
+                    }
+                    strAction = "EditSingleImage('" + currentItemID + "')";
+                    strImagePath = ctx.imagesPath + "oisweb.gif";
+                    menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 260);
+                    menuOption.id = "ID_EditInOIS";
+                    CUIInfo(menuOption, "EditDocument", ["EditDocument"]);
+                }
+            }
+            else if (ctx.listTemplate != 119) {
+                setDocType();
+                if (currentItemAppName != "" && currentItemOpenControl != "") {
+                    strDisplayText = "";
+                    if (currentItemAppName != " ") {
+
+                        if (typeof (L_EditIn_Text) != "undefined" && L_EditIn_Text != null) {
+                            strDisplayText = StBuildParam(L_EditIn_Text, currentItemAppName);
+                        } else {
+                            strDisplayText = StBuildParam(Strings.STS.L_EditIn_Text, currentItemAppName);
+                        }
+                    }
+                    else {
+                        var objEditor = StsOpenEnsureEx2(currentItemOpenControl + ".3");
+                        if (objEditor != null) {
+                            if (typeof (L_EditInApplication_Text) != "undefined" && L_EditInApplication_Text != null) {
+                                strDisplayText = L_EditInApplication_Text;
+                            } else {
+                                strDisplayText = Strings.STS.L_EditInApplication_Text;
+                            }
+                        }
+                    }
+                    if (strDisplayText != "") {
+                        if (this.currentCtx.displayFormUrl.indexOf("_layouts/15") == -1) {
+                            var currentUrlItem = escapeProperly(currentItemFileUrl);
+                            strAction = "editDocumentWithProgID2_ECB('" + currentUrlItem + "', '" + currentItemProgId + "', '"
++ currentItemOpenControl + "', '" + bIsCheckout + "', '" + ctx.HttpRoot + "', '" + currentItemCheckedoutToLocal + "')";
+                            strImagePath = ctx.imagesPath + currentItemIcon;
+                            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 260);
+                            menuOption.id = "ID_EditIn_" + currentItemAppName;
+                            CUIInfo(menuOption, "EditDocument", ["EditDocument"]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    CAMSep(m);
+    if (HasRights(0x0, 0x4)) {
+        if (currentItemFSObjType != 1) {
+            if (ctx.listBaseType == 1) {
+                if (ctx.listTemplate == '15000')
+                    AddCheckinCheckoutMenuItem_BB(m, ctx, currentItemEscapedFileUrl, currentItemID);
+                else
+                    AddCheckinCheckoutMenuItem(m, ctx, currentItemEscapedFileUrl);
+            }
+        }
+    }
+    //Hidden menu ECB version history
+    //    if ((ctx.verEnabled == 1 || ctx.isModerated) &&
+    //		(currentItemFSObjType != 1)) {
+    //        AddVersionsMenuItem(m, ctx, currentItemEscapedFileUrl);
+    //    }
+    if (HasRights(0x0, 0x4)) {
+        if ((ctx.isModerated == true) && HasRights(0x0, 0x10) &&
+			   (((currentItemModerationStatus == 2) ||
+				!ctx.EnableMinorVersions) && currentItemCheckedOutUserId == "" || currentItemFSObjType == 1)) {
+
+            if (typeof (L_ModerateItem_Text) != "undefined" && L_ModerateItem_Text != null) {
+                strDisplayText = L_ModerateItem_Text;
+            } else {
+                strDisplayText = Strings.STS.L_ModerateItem_Text;
+            }
+            strAction = "NavigateToApproveRejectAspx(event, '" + ctx.HttpRoot + "/_layouts/approve.aspx?List=" + ctx.listName
++ "&ID=" + currentItemID;
+            strAction = AddSourceToUrl(strAction) + GetRootFolder(ctx) + "')";
+            strImagePath = ctx.imagesPath + "apprj.gif";
+            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 850);
+            CUIInfo(menuOption, "Moderate", ["Moderate"]);
+            menuOption.id = "ID_ModerateItem";
+        }
+    }
+    CAMSep(m);
+    AddWorkflowsMenuItem(m, ctx);
+    if (currentItemFSObjType != 1) {
+        if (ctx.PortalUrl != null) {
+            if (typeof (L_AddToMyLinks_Text) != "undefined" && L_AddToMyLinks_Text != null) {
+                strDisplayText = L_AddToMyLinks_Text;
+            } else {
+                strDisplayText = Strings.STS.L_AddToMyLinks_Text;
+            }
+            strAction = "Portal_Tasks('PinToMyPage')";;
+            strImagePath = "";
+            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 1000);
+            CUIInfo(menuOption, "AddToMyLinks", ["AddToMyLinks"]);
+            menuOption.id = "ID_AddToMyLinks";
+        }
+    }
+    else if (ctx.listBaseType == 1
+		  && HasRights(0x10, 0x0)) {
+        AddWorkOfflineMenuItem(m, ctx, currentItemFileUrl);
+    }
+    if (HasRights(0x80, 0x0)
+		  && typeof (_spPageContextInfo) != 'undefined'
+		  && _spPageContextInfo != null
+		  && _spPageContextInfo.alertsEnabled) {
+
+        if (typeof (L_Subscribe_Text) != "undefined" && L_Subscribe_Text != null) {
+            strDisplayText = L_Subscribe_Text;
+        } else {
+            strDisplayText = Strings.STS.L_Subscribe_Text;
+        }
+        strAction = "NavigateToSubNewAspxV4(event, '" + ctx.HttpRoot + "', 'List=" + ctx.listName + "&ID=" + currentItemID + "')";
+        strImagePath = "";
+        menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 1100);
+        CUIInfo(menuOption, "Subscribe", ["Subscribe"]);
+        menuOption.id = "ID_Subscribe";
+    }
+    if (currentItemFSObjType != 1) {
+        //AddSendSubMenu(m, ctx);
+        if (ctx.displayFormUrl.indexOf("_layouts/15") == -1) {
+            AddSendSubMenu_BB(m, ctx);
+        }
+        else {
+            AddSendSubMenu_BB15(m, ctx);
+        }
+        AddGotoSourceItemMenuItem(m, ctx, itemTable, currentItemFSObjType);
+        AddDocTransformSubMenu(m, ctx);
+    }
+    if (currentItemFSObjType != 1 &&
+	   ctx.listTemplate == 109 &&
+	   typeof (DownloadOriginalImage) == "function") {
+        strAction = "DownloadOriginalImage(" + currentItemID + ")";
+        strImagePath = ctx.imagesPath + "download.gif";
+        if (typeof (L_DownloadOriginal_Text) != "undefined" && L_DownloadOriginal_Text != null) {
+            strDisplayText = L_DownloadOriginal_Text;
+        } else {
+            strDisplayText = Strings.STS.L_DownloadOriginal_Text;
+        }
+        menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 550);
+        CUIInfo(menuOption, "DownloadOriginalImage", ["DownloadOriginalImage"]);
+        menuOption.id = "ID_DownloadOriginal";
+    }
+    CAMSep(m);
+    AddManagePermsMenuItem(m, ctx, ctx.listName, currentItemID);
+    if (HasRights(0x0, 0x8) && !systemCheckout) {
+        if (typeof (L_DeleteDocItem_Text) != "undefined" && L_DeleteDocItem_Text != null) {
+            strDisplayText = L_DeleteDocItem_Text;
+        } else {
+            strDisplayText = Strings.STS.L_DeleteDocItem_Text;
+        }
+        var isCopy = "false";
+        if (typeof (itemTable.getAttribute("CSrc")) != "undefined" &&
+			itemTable.getAttribute("CSrc") != null &&
+			itemTable.getAttribute("CSrc") != "") {
+            isCopy = "true";
+        }
+        //        NewcurrentItemID = currentItemID;
+        //        NewcurrentItemFSObjType = currentItemFSObjType;
+        //strAction = "BB60_DeleteDocLibItem('" + ctx.HttpPath + "&Cmd=Delete&List=" + ctx.listName + "&ID=" + currentItemID + "&owsfileref=" + currentItemEscapedFileUrl + "&NextUsing=" + GetSource() + "'," + isCopy + "," + currentItemID + "," + currentItemFSObjType + ")";
+        strAction = "DeleteDocLibItem('" + ctx.HttpPath + "&Cmd=Delete&List=" + ctx.listName + "&ID=" + currentItemID + "&owsfileref=" + currentItemEscapedFileUrl + "&NextUsing=" + GetSource() + "'," + isCopy + "," + currentItemID + "," + currentItemFSObjType + ")";
+        strImagePath = ctx.imagesPath + "delitem.gif";
+        menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 1190);
+        menuOption.id = "ID_DeleteDocItem";
+        CUIInfo(menuOption, "Delete", ["Delete"]);
+    }
+    if (currentItemFSObjType == 1 &&
+		ctx.ContentTypesEnabled &&
+		ctx.listTemplate != 108) {
+        if (typeof (L_CustomizeNewButton_Text) != "undefined" && L_CustomizeNewButton_Text != null) {
+            strDisplayText = L_CustomizeNewButton_Text;
+        } else {
+            strDisplayText = Strings.STS.L_CustomizeNewButton_Text;
+        }
+        strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/ChangeContentTypeOrder.aspx?List=" + ctx.listName + "&RootFolder=" + currentItemEscapedFileUrl;
+        strAction = AddSourceToUrl(strAction) + "')";
+        strImagePath = "";
+        menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 1170);
+        CUIInfo(menuOption, "ChangeNewButton", ["ChangeNewButton"]);
+        menuOption.id = "ID_CustomizeNewButton";
+    }
+    return true;
+}
+
+function BB60_DeleteDocLibItem(delUrl, isCopy, currentItemID, currentItemFSObjType) {
+    ULSsa6:;
+    //debugger;
+    if (!IsContextSet())
+        return;
+    var ctx = currentCtx;
+    var ciid = currentItemID;
+    var fsobjType = currentItemFSObjType;
+    var strConfirm;
+    var isDocumentSet = false;
+
+
+    if (currentItemFSObjType == 1) {
+
+        //return false;
+        if (currentItemContentTypeId != null) {
+            delUrl += "&ContentTypeId=" + currentItemContentTypeId;
+            if (currentItemContentTypeId.substr(0, 8).toLowerCase() == "0x0120d5") {
+                isDocumentSet = true;
+            }
+        }
+        if (isDocumentSet) {
+            if (typeof (L_STSRecycleConfirm2_Text) != "undefined" && L_STSRecycleConfirm2_Text != null) {
+                strConfirm = (ctx.RecycleBinEnabled ? L_STSRecycleConfirm2_Text : L_STSDelConfirm2_Text);
+            } else {
+                strConfirm = (ctx.RecycleBinEnabled ? Strings.STS.L_STSRecycleConfirm2_Text : Strings.STS.L_STSDelConfirm2_Text);
+            }
+
+        }
+        else {
+
+            if (typeof (L_STSRecycleConfirm1_Text) != "undefined" && L_STSRecycleConfirm1_Text != null) {
+                strConfirm = (ctx.RecycleBinEnabled ? L_STSRecycleConfirm1_Text : L_STSDelConfirm1_Text);
+            } else {
+                strConfirm = (ctx.RecycleBinEnabled ? Strings.STS.L_STSRecycleConfirm1_Text : Strings.STS.L_STSDelConfirm1_Text);
+            }
+        }
+    }
+    else {
+        if (typeof (L_STSRecycleConfirm_Text) != "undefined" && L_STSRecycleConfirm_Text != null) {
+            strConfirm = (ctx.RecycleBinEnabled ? L_STSRecycleConfirm_Text : L_STSDelConfirm_Text);
+        } else {
+            strConfirm = (ctx.RecycleBinEnabled ? Strings.STS.L_STSRecycleConfirm_Text : Strings.STS.L_STSDelConfirm_Text);
+        }
+    }
+    if (ctx.HasRelatedCascadeLists && ctx.CascadeDeleteWarningMessage != null)
+        strConfirm = ctx.CascadeDeleteWarningMessage + strConfirm;
+    if (isCopy && currentItemFSObjType != 1) {
+        if (typeof (L_NotifyThisIsCopy_Text) != "undefined" && L_NotifyThisIsCopy_Text != null) {
+            strConfirm = L_NotifyThisIsCopy_Text + strConfirm;
+        } else {
+            strConfirm = Strings.STS.L_NotifyThisIsCopy_Text + strConfirm;
+        }
+    }
+    if (confirm(strConfirm)) {
+        var noti;
+        if (typeof (L_Notification_Delete) != "undefined" && L_Notification_Delete != null) {
+            noti = L_Notification_Delete;
+        } else {
+            noti = Strings.STS.L_Notification_Delete;
+        }
+        addNotification(noti, true);
+        BB60_DeletingFolder(delUrl, isCopy, currentItemID, currentItemFSObjType, strConfirm);
+        //        SubmitFormPost(delUrl, false, true);
+    }
+}
+function BB60_DeletingFolder(delUrl, isCopy, currentItemID, currentItemFSObjType, strConfirm) {
+    try {
+        var RootFolder = GetRootFolder(ctx);
+        //var strUrl = getExtractlyUrlOfDocFile(RootFolder, ctx.HttpRoot);
+        var SourceUrl = window.location.href;
+        var listId = ctx.listName;
+        var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/DeletingFolder.ashx?ListId=' + listId + RootFolder + "&debugger=1&idFolder=" + currentItemID + "&idType=" + currentItemFSObjType;
+        jq142HW60.ajax({
+            url: urlrequest,
+            cache: false,
+            complete: function (data) {
+                SubmitFormPost(delUrl, false, true);
+                //window.location.href = sourceUrl;
+            }
+        });
+    } catch (e)
+    { }
+}
+
+function AddSendSubMenu_BB(m, ctx) {
+    ULSoOc:;
+    if (typeof (L_Send_Text) != "undefined" && L_Send_Text != null) {
+        strDisplayText = L_Send_Text;
+    } else {
+        strDisplayText = Strings.STS.L_Send_Text;
+    }
+    var currentItemUrl = GetAttributeFromItemTable(itemTable, "Url", "ServerUrl");
+    var currentItemEscapedFileUrl;
+    var currentItenUnescapedUrl;
+    var strExtension;
+    if (currentItemFileUrl != null) {
+        currentItenUnescapedUrl = unescapeProperly(currentItemFileUrl);
+        currentItemEscapedFileUrl = escapeProperly(currentItenUnescapedUrl);
+        strExtension = SzExtension(currentItenUnescapedUrl);
+        if (strExtension != null && strExtension != "")
+            strExtension = strExtension.toLowerCase();
+    }
+    var serverFileRedirect = itemTable.getAttribute("SRed");
+    var iDefaultIO = itemTable.getAttribute("DefaultIO");
+    if (iDefaultIO == "0" && !HasRights(0x0, 0x20))
+        iDefaultIO = "1";
+    var otherLocationMenuItemCondition = (currentItemProgId != "SharePoint.WebPartPage.Document") &&
+			(serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20)) && (strExtension != "aspx");
+    var sendToEmailMenuItemCondition = HasRights(0x10, 0x0);
+    var downloadACopyMenuItemCondition = (currentItemFSObjType != 1) &&
+			(ctx.listBaseType == 1) && (serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20));
+    if ((!otherLocationMenuItemCondition) && (!sendToEmailMenuItemCondition) && (!downloadACopyMenuItemCondition))
+        return;
+    var sm = CASubM(m, strDisplayText, "", "", 400);
+    CUIInfo(sm, "SendTo", ["SendTo", "PopulateSendToMenu"]);
+    sm.IsSubMenu = true;
+    sm.id = "ID_Send";
+    var menuOption;
+    if (otherLocationMenuItemCondition) {
+        if (typeof (ctx.SendToLocationName) != "undefined" &&
+			ctx.SendToLocationName != null &&
+			ctx.SendToLocationName != "" &&
+			typeof (ctx.SendToLocationUrl) != "undefined" &&
+			ctx.SendToLocationUrl != null &&
+			ctx.SendToLocationUrl != "") {
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/copy.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl + "&FldUrl=" + escapeProperly(ctx.SendToLocationUrl);
+            strAction = AddSourceToUrl(strAction) + "')";
+            menuOption = CAMOpt(sm,
+								ctx.SendToLocationName,
+								strAction,
+								"");
+            CUIInfo(menuOption, "SendToRecommendedLocation", ["SendToRecommendedLocation"]);
+        }
+        if (typeof (itemTable.getAttribute("HCD")) != "undefined" && itemTable.getAttribute("HCD") == "1") {
+            if (typeof (L_ExistingCopies_Text) != "undefined" && L_ExistingCopies_Text != null) {
+                strDisplayText = L_ExistingCopies_Text;
+            } else {
+                strDisplayText = Strings.STS.L_ExistingCopies_Text;
+            }
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/updatecopies.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl;
+            strAction = AddSourceToUrl(strAction) + "')";
+            strImagePath = ctx.imagesPath + "existingLocations.gif";
+            menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+            menuOption.id = "ID_ExistingCopies";
+            CUIInfo(menuOption, "SendToExistingCopies", ["SendToExistingCopies"]);
+        }
+        if (typeof (L_OtherLocation_Text) != "undefined" && L_OtherLocation_Text != null) {
+            strDisplayText = L_OtherLocation_Text;
+        } else {
+            strDisplayText = Strings.STS.L_OtherLocation_Text;
+        }
+        if (ctx.listTemplate == '11111') {
+            strAction = "NavigateToSendToOtherLocationV4(event, '" + ctx.HttpRoot + "/_layouts/Bamboo.VideoLibrary/copyVideo.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl;
+        }
+        else {
+            strAction = "NavigateToSendToOtherLocationV4(event, '" + ctx.HttpRoot + "/_layouts/copy.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl;
+        }
+        strAction = AddSourceToUrl(strAction) + "')";
+        strImagePath = ctx.imagesPath + "sendOtherLoc.gif";
+        menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+        menuOption.id = "ID_OtherLocation";
+        CUIInfo(menuOption, "SendToOtherLocation", ["SendToOtherLocation"]);
+        if (ctx.OfficialFileNames != null && ctx.OfficialFileNames != "") {
+            var ar_officialFileNames = ctx.OfficialFileNames.split("__HOSTSEPARATOR__");
+            if (ar_officialFileNames != null) {
+                for (var count = 0; count < ar_officialFileNames.length; count++) {
+                    var strSerializedText = ar_officialFileNames[count];
+                    var ar_OfficialFileHost = strSerializedText.split(",");
+                    strDisplayText = ar_OfficialFileHost[0];
+                    var index = 0;
+                    var action = "Copy";
+                    if (ar_OfficialFileHost.length == 3) {
+                        strDisplayText = ar_OfficialFileHost[0].replace(/%2c/g, ",").replace(/%25/g, "%");
+                        index = ar_OfficialFileHost[1];
+                        action = ar_OfficialFileHost[2];
+                    }
+                    strAction = "if(confirm(\"" + StBuildParam(SubmitFileConfirmation[action], STSScriptEncode(strDisplayText)) + "\")!=0) SubmitFormPost('" + ctx.HttpRoot + "/_layouts/SendToOfficialFile.aspx?" + "ID=" + escapeProperly(strDisplayText) + "&Index=" + index + "&SourceUrl=" + currentItemEscapedFileUrl;
+                    strAction = AddSourceToUrl(strAction) + "')";
+                    strImagePath = "";
+                    menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+                    var strRibbonCmd = "SendToOfficialFile" + count;
+                    CUIInfo(menuOption, strRibbonCmd, [strRibbonCmd]);
+                }
+            }
+        }
+        CAMSep(sm);
+    }
+    if (sendToEmailMenuItemCondition) {
+        if (typeof (L_SendToEmail_Text) != "undefined" && L_SendToEmail_Text != null) {
+            strDisplayText = L_SendToEmail_Text;
+        } else {
+            strDisplayText = Strings.STS.L_SendToEmail_Text;
+        }
+        var currentItemUrl = GetAttributeFromItemTable(itemTable, "Url", "ServerUrl");
+        var httpRootWithSlash = ctx.HttpRoot.substr(0);
+        if (httpRootWithSlash[httpRootWithSlash.length - 1] != '/')
+            httpRootWithSlash += '/';
+        var slashLoc = -1;
+        var fileUrl = "";
+        slashLoc = httpRootWithSlash.substring(8).indexOf('/') + 8;
+        fileUrl = httpRootWithSlash.substr(0, slashLoc) + escapeProperlyCore(unescapeProperly(currentItemUrl), true);
+
+        var urlServer = httpRootWithSlash;
+
+        var idCurrentItem = GetAttributeFromItemTable(itemTable, "Id", "Id");
+        if (ctx.listTemplate == '11111') {
+            //debugger;
+            try {
+                var tempObj;
+                var wbrowse = BambooCheckBrowser().toLowerCase();
+                switch (wbrowse) {
+                    case "ie":
+                        tempObj = itemTable.parentElement.parentElement.childNodes[1].childNodes[2].childNodes[0].urlShow; //
+                        break;
+                    default:
+                        tempObj = itemTable.parentElement.parentElement.childNodes[1].childNodes[2].childNodes[0].attributes.urlshow.value;
+                        break;
+                }
+
+                if (tempObj != null) {
+                    //tempObj = tempObj.splist("?")
+                    if (tempObj.indexOf("Youtube") != -1) {
+                        var bbprotocal = '&bbprotocal=' + window.document.location.protocol;
+                        fileUrl = escapeProperlyCore(unescapeProperly(tempObj.replace("'", "")) + bbprotocal, true);
+                    }
+                    else
+                        fileUrl = urlServer + "_layouts/Bamboo.VideoLibrary/Default.aspx?vid=" + idCurrentItem + "&vlib=" + escapeProperlyCore(unescapeProperly(ctx.listName), true) + "&autoplay=1";
+                }
+                else
+                    fileUrl = urlServer + "_layouts/Bamboo.VideoLibrary/Default.aspx?vid=" + idCurrentItem + "&vlib=" + ctx.listName + "&autoplay=0";
+            }
+            catch (e)
+            { }
+        }
+
+        strAction = "javascript:SendEmail('" + fileUrl + "')";
+        strImagePath = ctx.imagesPath + "gmailnew.gif";
+        menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+        CUIInfo(menuOption, "EmailLink", ["EmailLink"]);
+        menuOption.id = "ID_SendToEmail";
+    }
+    if (downloadACopyMenuItemCondition) {
+
+        if (ctx.listTemplate != 109 &&
+			ctx.listTemplate != 119)
+            AddWorkspaceMenuItem_BB(sm, ctx);
+
+        // add code here
+        if (ctx.listTemplate == 15000) {
+            //BBEditDocument()
+            //debugger;
+            var hUrl = strAction.split('?');
+            hUrl = hUrl[hUrl.length - 1];
+            //		[1]	"list={E9821DD0-9E4D-4379-987C-4BBCCE79C404}&item=799&RootFolder=%2FHW60%2Ftest%20FS01')"	String
+            //url	"/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?ListId=&ListId={E9821DD0-9E4D-4379-987C-4BBCCE79C404}&FilePath=http://huy2k8server/HW60/test%20FS01/gameshow.doc"	String
+            //hUrl=hUrl.substring(0,hUrl.length-2);
+            hUrl = hUrl.split("&");
+            hUrl = hUrl[0].toString().replace("list", "ListId");
+            //hUrl= hUrl.replace("list","ListId");
+            hUrl = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + hUrl + "&FilePath=" + UrlFullEncode(fileUrl);
+            //UploadFile(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) 
+            //strAction="UploadFile('"+hUrl+"','"+escapeProperlyCore(unescapeProperly(currentItemUrl), true)+"','','SharePoint.OpenDocuments','0','"+ctx.HttpRoot+"','0')";
+            strAction = "DownloadCopy('" + hUrl + "','" + currentItemEscapedFileUrl + "')";
+            if (typeof (L_DownloadACopy_Text) != "undefined" && L_DownloadACopy_Text != null) {
+                menuOption = CAMOpt(sm, L_DownloadACopy_Text, strAction, "");
+            } else {
+                menuOption = CAMOpt(sm, Strings.STS.L_DownloadACopy_Text, strAction, "");
+            }
+
+            CUIInfo(menuOption, "DownloadCopy", ["DownloadCopy"]);
+            menuOption.id = "ID_DownloadACopy";
+        }
+            //end
+        else {
+
+            if (ctx.listTemplate != 119) {
+                strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/download.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl + "&FldUrl=" + escapeProperly(ctx.SendToLocationUrl);
+                strAction = AddSourceToUrl(strAction) + "')";
+
+                if (typeof (L_DownloadACopy_Text) != "undefined" && L_DownloadACopy_Text != null) {
+                    menuOption = CAMOpt(sm, L_DownloadACopy_Text, strAction, "");
+                } else {
+                    menuOption = CAMOpt(sm, Strings.STS.L_DownloadACopy_Text, strAction, "");
+                }
+                CUIInfo(menuOption, "DownloadCopy", ["DownloadCopy"]);
+                menuOption.id = "ID_DownloadACopy";
+            }
+        }
+
+    }
+}
+
+function AddSendSubMenu_BB15(m, ctx) {
+    var SubmitFileConfirmation = [];
+
+    SubmitFileConfirmation["Copy"] = Strings.STS.L_SubmitFileCopyWarning_Text;
+    SubmitFileConfirmation["Move"] = Strings.STS.L_SubmitFileMoveWarning_Text;
+    SubmitFileConfirmation["Link"] = Strings.STS.L_SubmitFileLinkWarning_Text;
+    var strDisplayText = Strings.STS.L_Send_Text;
+    var currentItemUrl = GetAttributeFromItemTable(itemTable, "Url", "ServerUrl");
+    var currentItemEscapedFileUrl;
+    var currentItenUnescapedUrl;
+    var strExtension;
+
+    if (currentItemFileUrl != null) {
+        currentItenUnescapedUrl = unescapeProperly(currentItemFileUrl);
+        currentItemEscapedFileUrl = escapeProperly(currentItenUnescapedUrl);
+        strExtension = SzExtension(currentItenUnescapedUrl);
+        if (strExtension != null && strExtension != "")
+            strExtension = strExtension.toLowerCase();
+    }
+    var serverFileRedirect = itemTable.getAttribute("SRed");
+    var iDefaultIO = itemTable.getAttribute("DefaultIO");
+
+    if (iDefaultIO == "0" && !HasRights(0x0, 0x20))
+        iDefaultIO = "1";
+    var otherLocationMenuItemCondition = currentItemProgId != "SharePoint.WebPartPage.Document" && (serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20)) && strExtension != "aspx";
+    var sendToEmailMenuItemCondition = HasRights(0x10, 0x0);
+    var downloadACopyMenuItemCondition = currentItemFSObjType != "1" && ctx.listBaseType == 1 && (serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20));
+
+    if (!otherLocationMenuItemCondition && !sendToEmailMenuItemCondition && !downloadACopyMenuItemCondition)
+        return;
+    var sm = CASubM(m, strDisplayText, "", "", String(400));
+
+    CUIInfo(sm, "SendTo", ["SendTo", "PopulateSendToMenu"]);
+    sm.IsSubMenu = true;
+    sm.id = "ID_Send";
+    sm.style.display = "none";
+    var menuOption;
+
+    if (otherLocationMenuItemCondition) {
+        if (typeof ctx.SendToLocationName != "undefined" && ctx.SendToLocationName != null && ctx.SendToLocationName != "" && typeof ctx.SendToLocationUrl != "undefined" && ctx.SendToLocationUrl != null && ctx.SendToLocationUrl != "") {
+            var strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/15/copy.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl + "&FldUrl=" + escapeProperly(ctx.SendToLocationUrl);
+
+            strAction = AddSourceToUrl(strAction) + "')";
+            menuOption = CAMOpt(sm, ctx.SendToLocationName, strAction, "");
+            CUIInfo(menuOption, "SendToRecommendedLocation", ["SendToRecommendedLocation"]);
+        }
+        if (typeof itemTable.getAttribute("HCD") != "undefined" && itemTable.getAttribute("HCD") == "1") {
+            strDisplayText = Strings.STS.L_ExistingCopies_Text;
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/15/updatecopies.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl;
+            strAction = AddSourceToUrl(strAction) + "')";
+            var strImagePath = ctx.imagesPath + "existingLocations.gif";
+
+            menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+            menuOption.id = "ID_ExistingCopies";
+            CUIInfo(menuOption, "SendToExistingCopies", ["SendToExistingCopies"]);
+        }
+        strDisplayText = Strings.STS.L_OtherLocation_Text;
+        strAction = "NavigateToSendToOtherLocationV4(event, '" + ctx.HttpRoot + "/_layouts/15/copy.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl;
+        strAction = AddSourceToUrl(strAction) + "')";
+        strImagePath = ctx.imagesPath + "sendOtherLoc.gif";
+        menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+        menuOption.id = "ID_OtherLocation";
+        CUIInfo(menuOption, "SendToOtherLocation", ["SendToOtherLocation"]);
+        if (typeof ctx.OfficialFileNames == "string" && ctx.OfficialFileNames != "") {
+            var ar_officialFileNames = ctx.OfficialFileNames.split("__HOSTSEPARATOR__");
+
+            if (ar_officialFileNames != null) {
+                for (var count = 0; count < ar_officialFileNames.length; count++) {
+                    var strSerializedText = ar_officialFileNames[count];
+                    var ar_OfficialFileHost = strSerializedText.split(",");
+
+                    strDisplayText = ar_OfficialFileHost[0];
+                    var index = 0;
+                    var action = "Copy";
+
+                    if (ar_OfficialFileHost.length == 3) {
+                        strDisplayText = (ar_OfficialFileHost[0].replace(/%2c/g, ",")).replace(/%25/g, "%");
+                        index = ar_OfficialFileHost[1];
+                        action = ar_OfficialFileHost[2];
+                    }
+                    strAction = "if(confirm(\"" + StBuildParam(SubmitFileConfirmation[action], STSScriptEncode(strDisplayText)) + "\")!=0) SubmitFormPost('" + ctx.HttpRoot + "/_layouts/15/SendToOfficialFile.aspx?" + "ID=" + escapeProperly(strDisplayText) + "&Index=" + String(index) + "&SourceUrl=" + currentItemEscapedFileUrl;
+                    strAction = AddSourceToUrl(strAction) + "')";
+                    strImagePath = "";
+                    menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+                    var strRibbonCmd = "SendToOfficialFile" + String(count);
+
+                    CUIInfo(menuOption, strRibbonCmd, [strRibbonCmd]);
+                }
+            }
+        }
+        CAMSep(sm);
+    }
+    if (sendToEmailMenuItemCondition) {
+        strDisplayText = Strings.STS.L_SendToEmail_Text;
+        currentItemUrl = GetAttributeFromItemTable(itemTable, "Url", "ServerUrl");
+        var httpRootWithSlash = ctx.HttpRoot.substr(0);
+
+        if (httpRootWithSlash[httpRootWithSlash.length - 1] != '/')
+            httpRootWithSlash += '/';
+        var slashLoc = -1;
+        var fileUrl = "";
+
+        slashLoc = (httpRootWithSlash.substring(8)).indexOf('/') + 8;
+        fileUrl = httpRootWithSlash.substr(0, slashLoc) + escapeProperlyCore(unescapeProperly(currentItemUrl), true);
+        strAction = "javascript:SendEmail('" + fileUrl + "')";
+        strImagePath = ctx.imagesPath + "gmailnew.gif";
+        menuOption = CAMOpt(sm, strDisplayText, strAction, strImagePath);
+        CUIInfo(menuOption, "EmailLink", ["EmailLink"]);
+        menuOption.id = "ID_SendToEmail";
+    }
+    if (downloadACopyMenuItemCondition) {
+        if (ctx.listTemplate != 109 && ctx.listTemplate != 119)
+            AddWorkspaceMenuItem_BB15(sm, ctx);
+
+        if (ctx.listTemplate == 15000) {
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/15/createws.aspx?list=" + ctx.listName + "&item=" + currentItemID + GetRootFolder(ctx) + "')";
+            var hUrl = strAction.split('?');
+            hUrl = hUrl[hUrl.length - 1];
+            hUrl = hUrl.split("&");
+            hUrl = hUrl[0].toString().replace("list", "ListId");
+            hUrl = "/_LAYOUTS/15/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + hUrl + "&FilePath=" + UrlFullEncode(fileUrl);
+            strAction = "DownloadCopy('" + hUrl + "','" + currentItemEscapedFileUrl + "')";
+            menuOption = CAMOpt(m, Strings.STS.L_DownloadACopy_Text, strAction, "");
+            CUIInfo(menuOption, "DownloadCopy", ["DownloadCopy"]);
+            menuOption.id = "ID_DownloadACopy";
+        }
+        else {
+            if (ctx.listTemplate != 119) {
+                strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/15/download.aspx?" + "SourceUrl=" + currentItemEscapedFileUrl + "&FldUrl=" + escapeProperly(ctx.SendToLocationUrl);
+                strAction = AddSourceToUrl(strAction) + "')";
+                menuOption = CAMOpt(m, Strings.STS.L_DownloadACopy_Text, strAction, "");
+                CUIInfo(menuOption, "DownloadCopy", ["DownloadCopy"]);
+                menuOption.id = "ID_DownloadACopy";
+            }
+        }
+    }
+}
+
+function AddWorkspaceMenuItem_BB15(m, ctxt) {
+    var menuOption;
+    var strAction;
+    var strSourceUrl = GetAttributeFromItemTable(itemTable, "SUrl", "SourceUrl");
+    if (ctx.listTemplate == 15000) {
+        strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/15/publishback.aspx?list=" + ctx.listName + "&item=" + currentItemID + GetRootFolder(ctx) + "')";
+    }
+    if (strSourceUrl != null && strSourceUrl != "" && strSourceUrl != "%20") {
+        if (HasRights(0x0, 0x21000)) {
+            strAction = "STSNavigate('" + ctxt.HttpRoot + "/_layouts/15/publishback.aspx?list=" + ctxt.listName + "&item=" + currentItemID + GetRootFolder(ctxt) + "')";
+            menuOption = CAMOpt(m, Strings.STS.L_PublishBack_Text, strAction, "", null, String(1140));
+            CUIInfo(menuOption, "PublishBack", ["PublishBack"]);
+            menuOption.id = "ID_PublishBack";
+        }
+    }
+    else {
+        if (HasRights(0x0, 0x800000) && HasRights(0x0, 0x21000) && HasRights(0x0, 0x4000000)) {
+            strAction = "STSNavigate('" + ctxt.HttpRoot + "/_layouts/15/createws.aspx?list=" + ctxt.listName + "&item=" + currentItemID + GetRootFolder(ctxt) + "')";
+            menuOption = CAMOpt(m, Strings.STS.L_CreateDWS_Text, strAction, "", null, String(1140));
+            CUIInfo(menuOption, "CreateDocumentWorkspace", ["CreateDocumentWorkspace"]);
+            menuOption.id = "ID_CreateDWS";
+        }
+    }
+}
+function AddWorkspaceMenuItem_BB(m, ctx) {
+    ULSsa6:;
+    var menuOption;
+    var strSourceUrl = GetAttributeFromItemTable(itemTable, "SUrl", "SourceUrl");
+    if (ctx.listTemplate == 15000) {
+        strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/publishback.aspx?list=" + ctx.listName + "&item=" + currentItemID + GetRootFolder(ctx) + "')";
+    }
+    if (strSourceUrl != null && strSourceUrl != "" && strSourceUrl != "%20") {
+        if (HasRights(0x0, 0x21000)) {
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/publishback.aspx?list=" + ctx.listName + "&item=" + currentItemID + GetRootFolder(ctx) + "')";
+            if (typeof (L_PublishBack_Text) != "undefined" && L_PublishBack_Text != null) {
+                menuOption = CAMOpt(m, L_PublishBack_Text, strAction, "", null, 1140);
+            } else {
+                menuOption = CAMOpt(m, Strings.STS.L_PublishBack_Text, strAction, "", null, 1140);
+            }
+            CUIInfo(menuOption, "PublishBack", ["PublishBack"]);
+            menuOption.id = "ID_PublishBack";
+        }
+    }
+    else {
+        if (HasRights(0x0, 0x800000) && HasRights(0x0, 0x21000) && HasRights(0x0, 0x4000000)) {
+            strAction = "STSNavigate('" + ctx.HttpRoot + "/_layouts/createws.aspx?list=" + ctx.listName + "&item=" + currentItemID + GetRootFolder(ctx) + "')";
+            if (typeof (L_CreateDWS_Text) != "undefined" && L_CreateDWS_Text != null) {
+                menuOption = CAMOpt(m, L_CreateDWS_Text, strAction, "", null, 1140);
+            } else {
+                menuOption = CAMOpt(m, Strings.STS.L_CreateDWS_Text, strAction, "", null, 1140);
+            }
+            CUIInfo(menuOption, "CreateDocumentWorkspace", ["CreateDocumentWorkspace"]);
+            menuOption.id = "ID_CreateDWS";
+        }
+    }
+}
+function DownloadCopy(url, currentItemEscapedFileUrl) {
+    try {
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length == 0) {
+                    STSNavigate(ctx.HttpRoot + "/_layouts/download.aspx?SourceUrl=" + currentItemEscapedFileUrl + "&FldUrl=" + escapeProperly(ctx.SendToLocationUrl));
+                }
+                else if (url.indexOf("&LoadContent=1") < 0) {
+                    this.status = "done";
+                    url = url + "&LoadContent=1";
+                    window.location.href = url;
+                }
+            }
+        });
+    } catch (e)
+    { }
+}
+
+
+function AddCheckinCheckoutMenuItem_BB(m, ctx, url, currentItemID) {
+    ULSsa6:;
+    var menuOption;
+    if (!HasRights(0x0, 0x4))
+        return;
+    if (currentItemCheckedOutUserId == SYSTEM_ACCOUNT_ID && ctx.CurrentUserId != SYSTEM_ACCOUNT_ID)
+        return;
+    if (currentItemCheckedOutUserId == null)
+        currentItemCheckedOutUserId = itemTable.getAttribute("COUId");
+    if (currentItemCheckedOutUserId != "") {
+        if (currentItemCheckedOutUserId == ctx.CurrentUserId
+		 || ctx.CurrentUserId == null
+			|| HasRights(0x0, 0x100)) {
+            if (typeof (L_Checkin_Text) != "undefined" && L_Checkin_Text != null) {
+                strDisplayText = L_Checkin_Text;
+            } else {
+                strDisplayText = Strings.STS.L_Checkin_Text;
+            }
+            if (!FV4UI() || ctx.listTemplate == 109) {
+                strAction = "NavigateToCheckinAspx('" + ctx.HttpRoot + "', 'List=" + ctx.listName + "&FileName=" + UrlFullEncode(url) + "')";
+            }
+            else
+                strAction = "CheckInSingleItemFromECB_Stub_BB(event, currentCtx, itemTable,currentItemID)";
+            strImagePath = ctx.imagesPath + "checkin.gif";
+            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 300);
+            menuOption.id = "ID_Checkin";
+            CUIInfo(menuOption, "CheckIn", ["CheckIn"]);
+            if (typeof (L_DiscardCheckou_Text) != "undefined" && L_DiscardCheckou_Text != null) {
+                strDisplayText = L_DiscardCheckou_Text;
+            } else {
+                strDisplayText = Strings.STS.L_DiscardCheckou_Text;
+            }
+            strAction = "UnDoCheckOutwithNotification('" + ctx.HttpRoot + "', '" + url + "')";
+            strImagePath = ctx.imagesPath + "unchkout.gif";
+            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 310);
+            menuOption.id = "ID_DiscardCheckou";
+            CUIInfo(menuOption, "DiscardCheckOut", ["DiscardCheckOut"]);
+        }
+    }
+    else if (typeof (g_disableCheckoutInEditMode) == "undefined" || !g_disableCheckoutInEditMode) {
+        if (typeof (L_Checkout_Text) != "undefined" && L_Checkout_Text != null) {
+            strDisplayText = L_Checkout_Text;
+        } else {
+            strDisplayText = Strings.STS.L_Checkout_Text;
+        }
+        if (currentItemOpenControl == "")
+            setDocType();
+        var opencontrol = "";
+        if (ctx.listTemplate != 109)
+            opencontrol = currentItemOpenControl + ".3";
+        var serverFileRedirect = itemTable.getAttribute("SRed");
+        if (serverFileRedirect == null || serverFileRedirect == "" || HasRights(0x0, 0x20)) {
+            if (!FV4UI() || ctx.listTemplate == 109)
+                strAction = "CheckoutDocument('" + ctx.HttpRoot + "', '" + url + "', '" + opencontrol + "')";
+            else
+                strAction = "CheckoutSingleItemFromECB_BB(currentCtx, itemTable,currentItemID)";
+            strImagePath = ctx.imagesPath + "checkout.gif";
+            menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 300);
+            menuOption.id = "ID_Checkout";
+            CUIInfo(menuOption, "CheckOut", ["CheckOut"]);
+        }
+        if (currentItemModerationStatus == null)
+            currentItemModerationStatus = GetAttributeFromItemTable(itemTable, "MS", "MStatus");
+        if (ctx.EnableMinorVersions) {
+            if (currentItemUIString == null)
+                currentItemUIString = GetAttributeFromItemTable(itemTable, "UIS", "UIString");
+            var minorversion = currentItemUIString % 512;
+            if ((((currentItemModerationStatus == 1) ||
+				(currentItemModerationStatus == 3)) &&
+				ctx.isModerated) ||
+				(!ctx.isModerated && minorversion != 0)) {
+                if (typeof (L_PublishItem_Text) != "undefined" && L_PublishItem_Text != null) {
+                    strDisplayText = L_PublishItem_Text;
+                } else {
+                    strDisplayText = Strings.STS.L_PublishItem_Text;
+                }
+                strAction = "PublishMajorVersion(event, '" + ctx.HttpRoot + "', 'List=" + ctx.listName + "&FileName=" + url + "&Publish=true')";
+                strImagePath = ctx.imagesPath + "pubmajor.gif";
+                menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 320);
+                CUIInfo(menuOption, "Publish", ["Publish"]);
+                menuOption.id = "ID_PublishItem";
+            }
+            else {
+                var strMenuOptionId;
+                var bCancelApproval = false;
+                if ((!ctx.isModerated) || (currentItemModerationStatus == 0)) {
+                    if (typeof (L_UnPublishItem_Text) != "undefined" && L_UnPublishItem_Text != null) {
+                        strDisplayText = L_UnPublishItem_Text;
+                    } else {
+                        strDisplayText = Strings.STS.L_UnPublishItem_Text;
+                    }
+                    strMenuOptionId = "ID_UnPublishItem";
+                    strImagePath = ctx.imagesPath + "unpub.gif";
+                }
+                else {
+                    if (typeof (L_CancelPublish_Text) != "undefined" && L_CancelPublish_Text != null) {
+                        strDisplayText = L_CancelPublish_Text;
+                    } else {
+                        strDisplayText = Strings.STS.L_CancelPublish_Text;
+                    }
+                    strMenuOptionId = "ID_CancelPublish";
+                    strImagePath = ctx.imagesPath + "unapprv.gif";
+                    bCancelApproval = true;
+                }
+                strAction = "UnPublish('" + ctx.HttpRoot + "', 'FileName=" + url + "&UnPublish=true'," + bCancelApproval + ")";
+                menuOption = CAMOpt(m, strDisplayText, strAction, strImagePath, null, 330);
+                if (bCancelApproval)
+                    CUIInfo(menuOption, "CancelApproval", ["CancelApproval"]);
+                else
+                    CUIInfo(menuOption, "Unpublish", ["Unpublish"]);
+                menuOption.id = strMenuOptionId;
+            }
+        }
+    }
+}
+var ctxTemp;
+var itemTabletemp;
+function CheckoutSingleItemFromECB_BB(currentCtx, itemTable, currentItemID) {
+    try {
+        var idList = currentCtx.listName;
+        var context = SP.ClientContext.get_current();
+        var site = context.get_web();
+        var list = context.get_web().get_lists().getById(idList);
+        this.listItem = list.getItemById(currentItemID);
+        ctxTemp = currentCtx;
+        itemTabletemp = itemTable;
+        context.load(this.listItem);
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckOut_ECBSucceeded), Function.createDelegate(this, this.onQueryFailed));
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function onQueryCheckOut_ECBSucceeded(sender, args) {
+    try {
+        var listId = SP.ListOperation.Selection.getSelectedList();
+        var temp = this.listItem.get_item('Status_Info');
+        var urlItem = this.listItem.get_item("FileRef");
+        if (temp != "InDocumentLibrary") // show check out
+        {
+
+            BambooCheckoutItem(listId, false, urlItem)
+        }
+        else // show checkin
+        {
+            //CheckoutSingleItemFromECB(ctxTemp, itemTabletemp);
+            if (SP.ClientSchemaVersions.currentVersion == "15.0.0.0")
+                CheckoutSingleItemFromECB_Ms15(ctxTemp, itemTabletemp); // fix for IE8 and IE9 bug 810
+            else
+                CheckoutSingleItemFromECB(ctxTemp, itemTabletemp)
+            setInterval('document.location.reload();', 5000);
+            //            var promptResult = CheckoutDocument(ctx.HttpRoot, urlItem, "SharePoint.OpenDocuments.3");
+            //            if (!promptResult)
+            //                removeNotification(nid, true);
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+
+function CheckoutSingleItemFromECB_Ms15(currentCtxt, itemsTable) {
+    {
+        var defd;
+
+        try {
+            defd = typeof inplview.CheckOutSingleItem;
+        }
+        catch (e) {
+            defd = 'undefined';
+        }
+        {
+            var str = "inplview.CheckOutSingleItem";
+            var rg = str.split('.');
+
+            if (rg.length > 1) {
+                var fnd = function () {
+                    inplview.CheckOutSingleItem(currentCtxt, itemsTable);
+                };
+
+                EnsureScript(rg[0], defd, fnd);
+            }
+        }
+    }
+    ;
+}
+
+function CheckoutSingleItemFromECB_MS14(currentCtx, itemTable) {
+    ULSsa6:;
+    {
+        var defd;
+        try {
+            defd = typeof (inplview.CheckOutSingleItem);
+        } catch (e) {
+            defd = 'undefined';
+        }
+        if (defd != 'undefined') {
+            inplview.CheckOutSingleItem(currentCtx, itemTable);
+        }
+        else {
+            var str = "inplview.CheckOutSingleItem";
+            var rg = str.split('.'); if (rg.length > 1) {
+                var fnd = function () {
+                    ULSsa6:;
+                    inplview.CheckOutSingleItem(currentCtx, itemTable);
+                };
+                EnsureScript(rg[0], defd, fnd);
+            }
+        }
+    };
+}
+// end check out ECB
+
+// Check in ECB menu
+var itemTabletemp_checkIn;
+var eventCheckinTemp;
+function CheckInSingleItemFromECB_Stub_BB(event, currentCtx, itemTable, currentItemID) {
+    try {
+        var idList = currentCtx.listName;
+        var context = SP.ClientContext.get_current();
+        var site = context.get_web();
+        var list = context.get_web().get_lists().getById(idList);
+        this.listItem = list.getItemById(currentItemID);
+        ctxTemp = currentCtx;
+        itemTabletemp_checkIn = itemTable;
+        eventCheckinTemp = event;
+        context.load(this.listItem);
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckIn_ECBSucceeded), Function.createDelegate(this, this.onQueryFailed));
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function onQueryCheckIn_ECBSucceeded() {
+    try {
+        var listId = SP.ListOperation.Selection.getSelectedList();
+        var temp = this.listItem.get_item('Status_Info');
+        var urlItem = this.listItem.get_item("FileRef");
+        var urlaction = 'List=' + listId + "&FileName=" + encodeURIComponent(urlItem);
+        if (temp != "InDocumentLibrary") // show check out
+        {
+            //BambooCheckoutItem(listId, false, urlItem)
+            var source = "&Source=" + window.location.href;
+            var arrayHttp = ctx.HttpRoot.split('/');
+            var siteUrl = arrayHttp[0] + "//" + arrayHttp[2];
+            var urlcheckin = ctx.HttpRoot + "/_layouts" + "/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.CheckIn.aspx?" + UrlFullEncode(urlaction) + source; //+ "&Source=" + GetSource(); // +"&List=" + idlistTemp; + "?" + ;
+            var options = {
+                url: urlcheckin,
+                width: 800,
+                height: 400,
+                dialogReturnValueCallback: CloseCallBack
+            };
+            SP.UI.ModalDialog.showModalDialog(options);
+        }
+        else // show checkin
+        {
+            CheckInSingleItemFromECB_Stub(eventCheckinTemp, ctxTemp, itemTabletemp_checkIn);
+            //document.location.reload();
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function CheckInSingleItemFromECB_Stub(evt, ctx, tab) {
+    ULSsa6:;
+    { var defd; try { defd = typeof (inplview.CheckInSingleItemFromECB); } catch (e) { defd = 'undefined'; } if (defd != 'undefined') { inplview.CheckInSingleItemFromECB(evt, ctx, tab); } else { var str = "inplview.CheckInSingleItemFromECB"; var rg = str.split('.'); if (rg.length > 1) { var fnd = function () { ULSsa6:; inplview.CheckInSingleItemFromECB(evt, ctx, tab); }; EnsureScript(rg[0], defd, fnd); } } };
+}
+
+function BBEditDocument() {
+    try {
+        //debugger;
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+        if (ci != 1) return false;
+        var idItem = items[0].id;
+
+        var context = SP.ClientContext.get_current();
+        var site = context.get_web();
+        var list = context.get_web().get_lists().getById(idList);
+        this.listItem = list.getItemById(idItem);
+        context.load(this.listItem);
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryEditDocumentRibbonSucceeded), Function.createDelegate(this, this.onQueryFailed));
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function onQueryEditDocumentRibbonSucceeded() {
+    try {
+        //debugger;
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var ci = CountDictionary(items);
+        if (ci != 1) return false;
+        var listId = SP.ListOperation.Selection.getSelectedList();
+        var temp = this.listItem.get_item('Status_Info');
+        var urlItem = this.listItem.get_item("FileRef");
+        if (temp != "InDocumentLibrary") // show check out
+        {
+            var SourceUrl = "&SourceUrl=" + window.location.href;
+            var params = "ListId=" + listId + "&FilePath=" + encodeURIComponent(urlItem);
+
+            var url = ctx.HttpRoot + "/_LAYOUTS/Bamboo.FileShareLibrary/CheckOutItemInFileShare.ashx?callAgain=true&" + params + SourceUrl;
+            window.location.href = url;
+            // BambooCheckoutItem(listId, false, urlItem)
+        }
+        else // show checkin
+        {
+            editDocumentWithProgIDNoUI(urlItem, '3', 'SharePoint.OpenDocuments', '1', url, '0');
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function BBCheckInDocument() {
+    try {
+
+        var urlCurrent = window.location.href.toLowerCase();
+        if (urlCurrent.indexOf("forms/dispform.aspx") > 1 && g_wsaListTemplateId == '15000') {
+            var ItemID = getQueryStringParameter('ID');
+            var context = SP.ClientContext.get_current();
+            var list = context.get_web().get_lists().getById(_spPageContextInfo.pageListId);
+            this.listItem = list.getItemById(ItemID);
+            context.load(this.listItem);
+            context.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckInSucceeded), Function.createDelegate(this, this.onQueryFailed));
+        }
+        else {
+            var items = SP.ListOperation.Selection.getSelectedItems();
+            var idList = SP.ListOperation.Selection.getSelectedList();
+            var ci = CountDictionary(items);
+            if (ci != 1) return false;
+            var idItem = items[0].id;
+
+            var divTag = document.getElementById(idItem);
+            //CheckOutSingleItem(ctx., divTag.offsetParent.offsetParent); //.innerHTML
+
+            var context = SP.ClientContext.get_current();
+            var site = context.get_web();
+            var list = context.get_web().get_lists().getById(idList);
+            this.listItem = list.getItemById(idItem);
+            context.load(this.listItem);
+            context.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckInSucceeded), Function.createDelegate(this, this.onQueryFailed));
+        }
+    }
+    catch (e)
+    { }
+}
+function onQueryCheckInSucceeded(sender, args) {
+    var listId;
+    var HttpRoot = "";
+    var urlCurrent = window.location.href.toLowerCase();
+    if (urlCurrent.indexOf("forms/dispform.aspx") > 1 && g_wsaListTemplateId == '15000') {
+        listId = _spPageContextInfo.pageListId;
+        //var httpRoot = "";
+        if (SP.ClientSchemaVersions.currentVersion == "14.0.0.0") {
+            if (typeof (ctx) == "undefined" || ctx == null)
+                ctx = new ContextInfo();
+            if (ctx.HttpRoot != "undefined" && ctx.HttpRoot != null)
+                HttpRoot = ctx.HttpRoot;
+            else if (typeof (WPSC) != "undefined") {
+                httpRoot = WPSC.WebPartPage.WebURL;
+            }
+            else { //http://balancer-vy.com/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx
+                httpRoot = window.location.protocol + "//" + window.location.hostname;
+            }
+
+            //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+        }
+        else {
+            HttpRoot = _spPageContextInfo.webAbsoluteUrl;
+            //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+        }
+    }
+    else {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var ci = CountDictionary(items);
+        if (ci != 1) return false;
+        listId = SP.ListOperation.Selection.getSelectedList();
+        HttpRoot = ctx.HttpRoot;
+    }
+    var temp = this.listItem.get_item('Status_Info');
+    var urlItem = this.listItem.get_item("FileRef");
+    var urlaction = 'List=' + listId + "&FileName=" + encodeURIComponent(urlItem);
+    var urlcheckin = "";
+    //    NavigateToCheckinAspx(ctx.HttpRoot, urlaction);
+
+    //    ShowInPopUI(event, ctx, urlaction);
+    if (temp != "InDocumentLibrary") // checkin
+    {
+        var source = "&Source=" + window.location.href;
+        urlcheckin = HttpRoot + "/_layouts" + "/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.CheckIn.aspx?" + urlaction + source; //+ "&Source=" + GetSource(); // +"&List=" + idlistTemp; + "?" + ;
+    }
+    else {
+        urlcheckin = HttpRoot + "/_layouts/Checkin.aspx" + "?" + UrlFullEncode(urlaction);
+    }
+    var options = {
+        url: urlcheckin,
+        width: 800,
+        height: 400,
+        dialogReturnValueCallback: CloseCallBack
+    };
+    SP.UI.ModalDialog.showModalDialog(options);
+}
+function BBCheckOutDocument() {
+
+    try {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+        if (ci != 1) return false;
+        var idItem = items[0].id;
+
+        var divTag = document.getElementById(idItem);
+        //CheckOutSingleItem(ctx., divTag.offsetParent.offsetParent); //.innerHTML
+
+        var context = SP.ClientContext.get_current();
+        var site = context.get_web();
+        var list = context.get_web().get_lists().getById(idList);
+        this.listItem = list.getItemById(idItem);
+        context.load(this.listItem);
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckOutSucceeded), Function.createDelegate(this, this.onQueryFailed));
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+var itemDisplay;
+function BBCheckOutDisplayDocument() {
+    try {
+        var urlCurrent = window.location.href.toLowerCase();
+        if (urlCurrent.indexOf("forms/dispform.aspx") > 1 && g_wsaListTemplateId == '15000') {
+            var ItemID = getQueryStringParameter('ID');
+            var ctxCurrent = new SP.ClientContext.get_current();
+            var oWebsite = ctxCurrent.get_web();
+            this.itemDisplay = oWebsite.get_lists().getById(_spPageContextInfo.pageListId).getItemById(ItemID);
+            ctxCurrent.load(this.itemDisplay);
+            ctxCurrent.executeQueryAsync(Function.createDelegate(this, this.onQueryCheckOutDisplayDocumentSuccess), Function.createDelegate(this, this.onQueryFailed));
+        }
+
+
+    } catch (e)
+    { }
+
+}
+
+function onQueryCheckOutDisplayDocumentSuccess(sender, args) {
+    try {
+        if (this.itemDisplay.get_item('FSObjType') == 0) {
+            var urlItem = this.itemDisplay.get_item("FileRef");
+            if (this.itemDisplay.get_item('Status_Info') != "InDocumentLibrary") {
+                BambooCheckoutItem(_spPageContextInfo.pageListId, false, urlItem)
+            }
+            else // show checkin
+            {
+                var httpRoot = "";
+                var promptResult = {};
+                if (SP.ClientSchemaVersions.currentVersion == "14.0.0.0") {
+                    if (typeof (ctx) == "undefined" || ctx == null)
+                        ctx = new ContextInfo();
+                    if (ctx.HttpRoot != "undefined" && ctx.HttpRoot != null)
+                        httpRoot = ctx.HttpRoot;
+                    else if (typeof (WPSC) != "undefined") {
+                        httpRoot = WPSC.WebPartPage.WebURL;
+                    }
+                    else { //http://balancer-vy.com/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx
+                        httpRoot = window.location.protocol + "//" + window.location.hostname;
+                    }
+
+                    //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+                }
+                else {
+                    httpRoot = _spPageContextInfo.webAbsoluteUrl;
+                    //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+                }
+                if (browseris.chrome == true || browseris.safari == true) {
+                    var url = "FileName=" + escapeProperly(unescapeProperly(urlItem)) + "&Checkout=true";
+                    NavigateToCheckinAspx(httpRoot, url);
+                    return true;
+                }
+                else {
+                    promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+                }
+                if (!promptResult) {
+                    removeNotification(nid, true);
+                }
+                //document.location.reload();
+            }
+        }
+
+    }
+    catch (e) {
+    }
+}
+
+
+function onQueryCheckOutSucceeded(sender, args) {
+    try {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var ci = CountDictionary(items);
+        if (ci != 1) return false;
+        var listId = SP.ListOperation.Selection.getSelectedList();
+        var temp = this.listItem.get_item('Status_Info');
+        var urlItem = this.listItem.get_item("FileRef");
+        if (temp != "InDocumentLibrary") // show check out
+        {
+            BambooCheckoutItem(listId, false, urlItem)
+        }
+        else // show checkin
+        {
+            var httpRoot = "";
+            if (SP.ClientSchemaVersions.currentVersion == "14.0.0.0") {
+                if (typeof (ctx) == "undefined" || ctx == null)
+                    ctx = new ContextInfo();
+                if (ctx.HttpRoot != "undefined" && ctx.HttpRoot != null)
+                    httpRoot = ctx.HttpRoot;
+                else if (typeof (WPSC) != "undefined") {
+                    httpRoot = WPSC.WebPartPage.WebURL;
+                }
+                else { //http://balancer-vy.com/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx
+                    httpRoot = window.location.protocol + "//" + window.location.hostname;
+                }
+
+                //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+            }
+            else {
+                httpRoot = _spPageContextInfo.webAbsoluteUrl;
+                //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+            }
+            if (browseris.chrome == true || browseris.safari == true) {
+                var url = "FileName=" + escapeProperly(unescapeProperly(urlItem)) + "&Checkout=true";
+                NavigateToCheckinAspx(httpRoot, url);
+                return true;
+            }
+            else {
+                promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+            }
+            if (!promptResult) {
+                removeNotification(nid, true);
+            }
+            setInterval('document.location.reload();', 5000);
+        }
+    }
+    catch (e) {
+        //alert('error');
+    }
+}
+function BambooCheckoutItem(listId, callAgain, urlItem) {
+    var SourceUrl = "&SourceUrl=" + window.location.href;
+    var params = "ListId=" + listId + "&FilePath=" + encodeURIComponent(urlItem);
+    var url;
+    var httpRoot = "";
+    if (SP.ClientSchemaVersions.currentVersion == "14.0.0.0") {
+        if (typeof (ctx) == "undefined" || ctx == null)
+            ctx = new ContextInfo();
+        if (ctx.HttpRoot != "undefined" && ctx.HttpRoot != null)
+            httpRoot = ctx.HttpRoot;
+        else if (typeof (WPSC) != "undefined") {
+            httpRoot = WPSC.WebPartPage.WebURL;
+        }
+        else { //http://balancer-vy.com/_layouts/Bamboo.FileShareLibrary/StatusFileUploading.ashx
+            httpRoot = window.location.protocol + "//" + window.location.hostname;
+        }
+
+        //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+    }
+    else {
+        httpRoot = _spPageContextInfo.webAbsoluteUrl;
+        //promptResult = CheckoutDocument(httpRoot, urlItem, "SharePoint.OpenDocuments.3");
+    }
+    if (callAgain == false) {
+
+        url = httpRoot + "/_LAYOUTS/Bamboo.FileShareLibrary/CheckOutItemInFileShare.ashx?" + params + SourceUrl;
+
+        window.location.href = url;
+        this.status = "Check out file in File Share";
+        //BambooCheckoutItem(listId, true, urlItem);
+    }
+    else {
+
+        url = httpRoot + "/_LAYOUTS/Bamboo.FileShareLibrary/CheckOutItemInFileShare.ashx?callAgain=true&" + params + SourceUrl;
+
+        window.location.href = url;
+    }
+    urltemp = url;
+    //if (browseris.safari == false) {
+    //    context = new SP.ClientContext.get_current();
+    //    context.executeQueryAsync(Function.createDelegate(this, this.OnRefreshPage), Function.createDelegate(this, this.onQueryFailed));
+    //}
+    //else
+    //{
+    setInterval('SP.UI.ModalDialog.RefreshPage(SP.UI.DialogResult.OK);', 5000);
+    //}
+    //    var myScriptEngine = ' ExecuteOrDelayUntilScriptLoaded(CheckOutItem_BB, "sp.js"); ';
+    //    myScriptEngine += ' function CheckOutItem_BB(){window.location.href='+url+';}'
+    //    document.write('<script type="text/javascript"> ' + myScriptEngine + ' </' + 'script>');
+    //    SP.UI.ModalDialog.RefreshPage(SP.UI.DialogResult.OK);
+
+}
+
+function onQueryFailed(sender, args) {
+    alert('request failed' + args.get_message() + '\n' + args.get_stackTrace());
+}
+
+function EnableCheckiItem() {
+    try {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        //var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+
+        if (ci != 1) return false;
+        if (items[0].fsObjType == "1") return false;
+        //if (!HasRights(0x0, 0x4))
+        //    return false;
+
+        var idItem = items[0].id;
+        //debugger;
+        //var divTag = document.getElementById(idItem);
+        //var startIndex = divTag.innerHTML.indexOf("DispEx(this,");
+        //var lastIndex = divTag.innerHTML.indexOf(')" href');
+        //var subText = divTag.innerHTML.substring(startIndex, lastIndex);
+        var subText = jq142HW60('div#' + idItem).find("a").attr('onclick').toString();
+        var split = subText.split(","); // 10: check out; 11: currentLogin
+        var currentUser = "'" + ctx.CurrentUserId + "'";
+        if (split[10] == "''") {
+            return false;
+        }
+        else {
+            if (split[10] == currentUser)
+                return true;
+            else
+                return false;
+
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+
+}
+var listItem;
+
+function EnableCheckOutItem() {
+
+    try {
+        //debugger;
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        //var idList = SP.ListOperation.Selection.getSelectedList();
+        var ci = CountDictionary(items);
+
+        if (ci != 1) return false;
+        if (items[0].fsObjType == "1") return false;
+        //if (!HasRights(0x0, 0x4))
+        //    return false;
+        var idItem = items[0].id;
+        //debugger;
+        //var divTag = document.getElementById(idItem);
+        //var startIndex = divTag.innerHTML.indexOf("DispEx(this,");
+        //var lastIndex = divTag.innerHTML.indexOf(')" href');
+        //var subText = divTag.innerHTML.substring(startIndex, lastIndex);
+        var subText = jq142HW60('div#' + idItem).find("a").attr('onclick').toString();
+        var split = subText.split(","); // 10: check out; 11: currentLogin
+        var currentUser = "'" + ctx.CurrentUserId + "'";
+        //alert(split[10]);
+        if (split[10] == "''") {
+            return true;
+        }
+        else {
+            return false;
+
+        }
+
+    }
+    catch (e) {
+        return false;
+    }
+
+}
+
+
+
+function singleEnable() {
+    var items =
+            SP.ListOperation.Selection.getSelectedItems();
+    var list = SP.ListOperation.Selection.getSelectedList();
+    //var testListItem = SP.ListOperation.Selection.selectListItem
+    var ci = CountDictionary(items);
+    if (ci != 1) return false;
+    if (items[0].fsObjType == "1") return false;
+    //    alert(g_disableCheckoutInEditMode);
+    return (ci == 1);
+}
+
+
+//function example13() {
+//    var ctx = new SP.ClientContext.get_current();
+//var oBooksList = ctx.get_web().get_lists().getById('Books');
+//this.listItem = oBooksList.getItemById(2);
+//    ctx.c
+//    ctx.executeQueryAsync(
+//    Function.createDelegate(this, this.onSucceededCallback),
+//    Function.createDelegate(this, this.onFailedCallback));
+//}
+
+//function onSucceededCallback(sender, args) {
+//alert('List deleted!');
+//}
+//function onFailedCallback()
+//(sender, args) {
+//alert('failed');
+//}
+
+function SetParaForRequest(sourceUrl, param) {
+    var indexTemp = sourceUrl.toLowerCase().indexOf(param);
+    var rootfolder = "";
+    if (indexTemp > 0) {
+        rootfolder = sourceUrl.substring(indexTemp);
+        var arrayTemp = rootfolder.split('&');
+        rootfolder = "&" + arrayTemp[0];
+        //rootfolder= unescape(rootfolder);
+    }
+    return rootfolder;
+}
+function ShowPopupUploadFile(siteUrl, listId, sourceUrl) {
+    var rootfld = SetParaForRequest(unescape(sourceUrl), "rootfolder");
+    var isUrlRibbon = "";
+    var rootFolderWeb = "";
+    if (rootfld.length == 0) {
+        rootfld = "&rootfolder=" + ctx.listUrlDir
+        isUrlRibbon = "&isUrlRibbon=true";
+        rootFolderWeb = "&rootFolderWeb=" + ctx.listUrlDir;
+    }
+    var arrayHttp = ctx.HttpRoot.split('/');
+
+    siteUrl = arrayHttp[0] + "//" + arrayHttp[2];
+    var myUrl = ctx.HttpRoot + "/_layouts/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.Upload.aspx?List=" + listId + rootfld + "&dlg=1&Source=" + sourceUrl + isUrlRibbon + rootFolderWeb;
+    //myUrl = "http://huy2k8server/HW60/_layouts/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.CheckIn.aspx?List={B75F7D3A-8A0B-4A8D-A6FF-FFD7EB8789E6}&FileName=/HW60/test fs 2/How to import User Profile From AD to SP2010.docx&Source=http://huy2k8server/HW60/test%20fs%202/Forms/AllItems.aspx";
+    var urlrequest = siteUrl + "/_layouts/Bamboo.FileShareLibrary/UploadHandlerTemp.ashx";
+    //    jq142HW60.ajax({
+    //	type:"POST",
+    //        url: urlrequest,
+    //        cache: false,
+    //        complete: function(data) {
+    BBShowPopUP(myUrl);
+    //        }
+    //    });
+    //window.location = myUrl
+}
+function ShowPopupNewFolder(siteUrl, listId, sourceUrl) {
+    try {
+        var urlRoot = ctx.HttpRoot; //.split('/');
+        if (urlRoot != null && urlRoot != 'undefined' && urlRoot != '')
+            siteUrl = urlRoot;
+        var rootfld = SetParaForRequest(unescape(sourceUrl), "rootfolder");
+        var myUrl = siteUrl + "/_layouts/Bamboo.FileShareLibrary/Bamboo.FileShare.CreateNewFolder.aspx?List=" + listId + rootfld;
+        BBShowPopUP(myUrl);
+    }
+    catch (e) {
+        alert(e);
+    }
+}
+function BBShowPopUP(urlNewFolder) {
+    var options = {
+        url: urlNewFolder,
+        width: 600,
+        //height: 400,
+        autoSize: true,
+        dialogReturnValueCallback: CloseCallBack
+    };
+    SP.UI.ModalDialog.showModalDialog(options);
+    //SP.UI.ModalDialog.OpenPopUpPage(myUrl,CloseCallBack,600,400);
+}
+function CloseCallBack() {
+    window.location.href = window.location.href;
+    //SP.UI.ModalDialog.RefreshPage(SP.UI.DialogResult.OK);
+    //window.location.reload(true);
+}
+
+//alert('cua file share');		
+var runAgain = 0;
+
+function click(e) {
+
+    if (navigator.appName == 'Netscape'
+           && e.which == 3) {
+        alert("no right click please")
+        return false;
+    }
+    else {
+        if (navigator.appName == 'Microsoft Internet Explorer'
+          && (event.button == 2) || event.button == 1) {
+            try {
+                if (bbElm != null) {
+                    var filePath = bbElm.all[3];
+                    if (ctx.listTemplate == '15000') {
+                        filePath = UrlFullEncode(filePath);
+                        var params = getParameters(filePath, ctx.listName);
+                        var url = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + params;
+                        //alert(bbElm.all[3]);
+                        BambooOnItem(url);
+                    }
+                    bbElm = null;
+                    //alert(bbElm);
+                }
+            }
+            catch (e)
+            { }
+        }
+        //            alert("no right click please")
+        //        return false;
+    }
+    return true;
+}
+function UrlFullEncode(stringSource) {
+
+    var string = stringSource.toString();
+
+    string = string.replace(/\r\n/g, "\n");
+
+    while (string.indexOf("+") >= 0) {
+        string = string.replace("+", "%2B");
+    }
+    return string;
+}
+
+var bbElm = null;
+//	    function OnItem(elm) {
+//	        try {
+//	            //debugger;
+//	            bbElm = elm;
+//	            elm.onmousedown = click;
+//	            //        if (ctx.listTemplate == '15000' && event.button!=0) {
+//	            //            runAgain = 1;
+//	            //            
+//	            //            alert(event.button);
+//	            //            var filePath = elm.all[3];
+//	            //            var params = getParameters(filePath, ctx.listName);
+//	            //            var url = "/_LAYOUTS/Bamboo.FileShareLibrary/HandleDataToShow.ashx?" + params;
+//	            //            BambooOnItem(url);
+//	            //        }
+//	        }
+//	        catch (e)
+//	        { }
+//	        DeferCall('OnItemDeferCall', elm);
+//	    }
+function BambooOnItem(url) {
+    try {
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 1) {
+                    try {
+                        runAgain = 0;
+                    }
+                    catch (e)
+                    { }
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+}
+var callagain = false;
+var myEvent = null;
+//var intervalId=setInterval("DispEx(null,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)",250); 
+
+function DispEx(ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	    				fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	    				strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask) {
+
+    if (ele == null) return;
+    var ctxtemp;
+    if (typeof (ctx) == "undefined" || ctx == null)
+        ctx = new ContextInfo();
+    else {
+        ctxtemp = ctx;
+        if (currentCtx != null)
+            ctx = currentCtx;
+    }
+    ctx.CurrentUserId = strCurrentUser;
+    if (strRequireCheckout == '1')
+        ctx.isForceCheckout = true;
+    else
+        ctx.isForceCheckout = false;
+
+    if (ctx.listTemplate != 15000) {
+
+        DispEx2010(ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask);
+        ctx = ctxtemp;
+    }
+    else {
+        var params = getParameters(ele.toString());
+        params = encodeURI(params);
+        if (params.indexOf("?id=") > 0) {
+            params = params.replace("?id=", "&id=")
+        }
+        //var url = "/_LAYOUTS/Bamboo.FileShareLibrary/HandleDataToShow.ashx?" + params;
+        var urlTemp = window.location.href;
+        params += "&SourceUrl=" + encodeURIComponent(urlTemp);
+        var url = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + params;
+        myEvent = new MyEventClass(objEvent);
+        postRequest(url, ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	        fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	        strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask);
+        ctx = ctxtemp;
+        return false;
+    }
+}
+
+function DispEx2010(ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask) {
+    ULSxSy:;
+    CoreInvoke('_DispEx', ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask);
+}
+//setTimeout("window.clearInterval(intervalId);",10000); 
+
+function DispEx1(ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	    fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	    strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask) {
+    var tblFileDlg = document.getElementById("FileDialogViewTable");
+    if (tblFileDlg != null) {
+        objEvent.cancelBubble = false;
+        objEvent.returnValue = false;
+        return true;
+    }
+    if (typeof (ctx) == "undefined" || ctx == null)
+        ctx = new ContextInfo();
+    ctx.CurrentUserId = strCurrentUser;
+    if (strRequireCheckout == '1')
+        ctx.isForceCheckout = true;
+    else
+        ctx.isForceCheckout = false;
+    currentItemCheckedOutUserId = strCheckoutUser;
+    currentItemCheckedoutToLocal = strCheckedoutTolocal;
+    currentItemProgId = strHtmlType;
+    if (strPermmask != null && strPermmask != '')
+        SetCurrentPermMaskFromString(strPermmask, null)
+    objEvent.cancelBubble = true;
+    if (strServerFileRedirect != null && strServerFileRedirect != '')
+        strServerFileRedirect = strServerFileRedirect.substring(1);
+    return DispDocItemEx2(ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	        fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strServerFileRedirect);
+}
+
+function postRequest(url, ele, objEvent, fTransformServiceOn, fShouldTransformExtension,
+	   fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect,
+	    strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask) {
+    try {
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText == "") {
+                    this.status = "done";
+                    var event = new MyEventClass(myEvent);
+                    DispEx1(ele, myEvent, fTransformServiceOn, fShouldTransformExtension, fTransformHandleUrl, strHtmlTrProgId, iDefaultItemOpen, strProgId, strHtmlType, strServerFileRedirect, strCheckoutUser, strCurrentUser, strRequireCheckout, strCheckedoutTolocal, strPermmask);
+                    //var urlOfTXTFile = ele.toString();
+                    //if (urlOfTXTFile.indexOf('.txt') >= 0)
+                    //window.location = urlOfTXTFile;// fix bug 611
+                }
+                else if (data.responseText == "success" && url.indexOf("&LoadContent=1") < 0) {
+                    //if (url.indexOf("&LoadContent=1") < 0) {
+                    this.status = "done";
+                    url = url + "&LoadContent=1";
+                    window.location.href = url;
+                    // }
+                }
+                else {
+                    alert(data.responseText);
+                }
+            }
+        });
+
+    } catch (e)
+    { alert(e.toString()); }
+}
+function test() {
+    //debugger;
+    //myEvent = event;
+    return true;
+}
+//	    //-----------------------------------------------------------------
+function editDocumentWithProgID2(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    var pathDoc = getExtractlyUrlOfDocFile(strDocument, strhttpRoot); // + siteName[siteName.length-2] + "/" + siteName[siteName.length-1];
+    var params = getParameters(pathDoc);
+    params = "Editing=1&" + params;
+    var url = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + params;
+    UploadFile(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+}
+function editDocumentWithProgID2_ECB(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    strDocument = unescapeProperly(strDocument);
+    var pathDoc = getExtractlyUrlOfDocFile(strDocument, strhttpRoot); // + siteName[siteName.length-2] + "/" + siteName[siteName.length-1];
+    var params = getParameters(pathDoc);
+    params = "Editing=1&" + params;
+    var url = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + params;
+    UploadFile(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+}
+
+
+function editDocumentWithProgID2Custom(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    var errorCode = editDocumentWithProgIDNoUI(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+    if (errorCode == 1) {
+        if (typeof (L_EditDocumentRuntimeError_Text) != "undefined" && L_EditDocumentRuntimeError_Text != null) {
+            alert(L_EditDocumentRuntimeError_Text);
+        } else {
+            alert(Strings.STS.L_EditDocumentRuntimeError_Text);
+        }
+        window.onfocus = RefreshOnNextFocus;
+    }
+    else if (errorCode == 2) {
+        if (typeof (L_EditDocumentProgIDError_Text) != "undefined" && L_EditDocumentProgIDError_Text != null) {
+            alert(L_EditDocumentProgIDError_Text);
+        } else {
+            alert(Strings.STS.L_EditDocumentProgIDError_Text);
+        }
+    }
+}
+function UploadFile(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    try {
+
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length == 0) {
+                    editDocumentWithProgID2Custom(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+                }
+                else if (url.indexOf("&LoadContent=1") < 0) {
+                    this.status = "done";
+                    url = url + "&LoadContent=1";
+                    window.location.href = url;
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+}
+
+function editDocumentWithProgIDNoUICuaMS(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    var objEditor;
+    var fRet;
+    var fUseLocalCopy = false;
+    varEditor = varEditor.replace(/(?:\.\d+)jq142HW60/, '');
+    if (strDocument.charAt(0) == "/" || strDocument.substr(0, 3).toLowerCase() == "%2f")
+        strDocument = document.location.protocol + "//" + document.location.host + strDocument;
+    var strextension = SzExtension(unescapeProperly(strDocument));
+    if (FSupportCheckoutToLocal(strextension)) {
+        try {
+            objEditor = new ActiveXObject(varEditor + ".3");
+            if (objEditor != null) {
+                if (bCheckout == "1") {
+                    if (!objEditor.CheckoutDocumentPrompt(strDocument, true, varProgID))
+                        return 1;
+                }
+                else {
+                    if (strCheckouttolocal == "1")
+                        fUseLocalCopy = true;
+                    if (!objEditor.EditDocument3(window, strDocument, fUseLocalCopy, varProgID))
+                        return 1;
+                }
+                var fRefreshOnNextFocus = false;
+                fRefreshOnNextFocus = objEditor.PromptedOnLastOpen();
+                if (fRefreshOnNextFocus) {
+                    window.onfocus = RefreshOnNextFocus;
+                }
+                else {
+                    SetWindowRefreshOnFocus();
+                }
+                return;
+            }
+        }
+        catch (e) {
+        }
+    }
+    if (bCheckout == "1") {
+        var L_ConfirmCheckout_TextVesion;
+        if (typeof (L_ConfirmCheckout_TextVesion) != "undefined" && L_ConfirmCheckout_TextVesion != null) {
+            L_ConfirmCheckout_TextVesion = L_ConfirmCheckout_Text;
+        } else {
+            L_ConfirmCheckout_TextVesion = Strings.STS.L_ConfirmCheckout_Text;
+        }
+
+        if (confirm(L_ConfirmCheckout_TextVesion)) {
+            strDocument = UrlFullEncode(strDocument)
+            NavigateToCheckinAspx(strhttpRoot, "FileName=" + escapeProperly(unescapeProperly(strDocument)) + "&Checkout=true");
+        }
+        else
+            return;
+    }
+    try {
+        objEditor = new ActiveXObject(varEditor + ".2");
+        if (!objEditor.EditDocument2(window, strDocument, varProgID))
+            return 1;
+        window.onfocus = RefreshOnNextFocus;
+        return;
+    }
+    catch (e) {
+    }
+    try {
+        objEditor = new ActiveXObject(varEditor + ".1");
+        window.onfocus = null;
+        if (SzExtension(strDocument) == "ppt" && varProgID == "")
+            varProgID = "PowerPoint.Slide";
+        if (!objEditor.EditDocument(strDocument, varProgID))
+            return 1;
+        SetWindowRefreshOnFocus();
+        return;
+    }
+    catch (e) {
+        return 2;
+    }
+}
+
+function editDocumentWithProgIDNoUI(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+
+    var pathDoc = getExtractlyUrlOfDocFile(strDocument, strhttpRoot);  // + siteName[siteName.length-2] + "/" + siteName[siteName.length-1];
+    var params = getParameters(pathDoc);
+    params = "Editing=1&" + params;
+    var url = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?" + params;
+    ViewFileInEditMode(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+}
+
+function ViewFileInEditMode(url, strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal) {
+    try {
+
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length == "") {
+                    editDocumentWithProgIDNoUICuaMS(strDocument, varProgID, varEditor, bCheckout, strhttpRoot, strCheckouttolocal);
+                }
+                else {
+                    //window.location.href = url;
+                    window.location.href = url + "&LoadContent=true";
+                    this.status = "Open file in File Share";
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+    this.status = "Loading content of file...";
+}
+
+function CheckoutDocument(strhttpRoot, strDocument, strOpenControl) {
+    var fClientCheckout = false;
+    var fRet = true;
+    var stsOpen = null;
+    //if (stsOpen != null) {
+    try {
+        var urlTemp = window.location.href;
+        if (ctx.listTemplate == '15000') {
+            var params = getParameters(strDocument.toString());
+            params = params + "&SourceUrl=" + encodeURIComponent(urlTemp);
+            var pageRequest = GetSource();
+            //var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/CheckInItemInFileShare.ashx?' + params + '&FileName=' + strDocument; //'&List=' + tempIdList + '&SourceUrl=' + pageRequest;
+            var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/CheckOutItemInFileShare.ashx?' + params; //+ '&FileName=' + strDocument; //'&List=' + tempIdList + '&SourceUrl=' + pageRequest;
+            try {
+
+                jq142HW60.ajax({
+                    url: url,
+                    cache: false,
+                    complete: function (data) {
+                        if (data.responseText.length == 0) {
+                            if (strDocument.charAt(0) == "/" || strDocument.substr(0, 3).toLowerCase() == "%2f")
+                                strDocument = document.location.protocol + "//" + document.location.host + strDocument;
+                            var strextension = SzExtension(unescapeProperly(strDocument));
+                            if (FSupportCheckoutToLocal(strextension) && "SharePoint.OpenDocuments.3".indexOf(strOpenControl) >= 0) {
+                                strOpenControl = "SharePoint.OpenDocuments.3";
+                                stsOpen = StsOpenEnsureEx(strOpenControl);
+                            }
+                            if (stsOpen != null) {
+                                fRet = stsOpen.CheckoutDocumentPrompt(unescapeProperly(strDocument), false, "");
+                                SetWindowRefreshOnFocus();
+                                fClientCheckout = true;
+                            }
+                            if (!fClientCheckout) {
+                                strDocument = UrlFullEncode(strDocument)
+                                NavigateToCheckinAspx(strhttpRoot, "FileName=" + escapeProperly(unescapeProperly(strDocument)) + "&Checkout=true");
+                            }
+
+                        }
+                        else {
+                            var url = "/_LAYOUTS/Bamboo.FileShareLibrary/CheckOutItemInFileShare.ashx?callAgain=true&" + params;
+                            window.location.href = url;
+                            this.status = "Check out file in File Share";
+                        }
+                    }
+                });
+
+            } catch (e)
+            { }
+        }
+    }
+    catch (e) {
+    }
+}
+
+function NavigateToCheckinAspx(strHttpRoot, strArgs) {
+
+    var pageRequest = GetSource();
+
+    var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/CheckInItemInFileShare.ashx?' + strArgs + '&SourceUrl=' + pageRequest;
+    try {
+
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                this.status = "done";
+                if (data.responseText == "") {
+                    SubmitFormPost(strHttpRoot + "/_layouts" + "/Checkin.aspx?" + strArgs + "&Source=" + GetSource());
+                }
+                else {
+                    var listIdObject = document.getElementById("ctl00_PlaceHolderMain_idList");
+                    var idlistTemp = listIdObject.value;
+                    var arrayHttp = strHttpRoot.split('/');
+                    window.location.href = strHttpRoot + "/_layouts" + "/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.CheckIn.aspx?" + strArgs + "&Source=" + GetSource(); // +"&List=" + idlistTemp;
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+}
+
+
+//-------------------------------------------
+function getExtractlyUrlOfDocFile(strDocument, strhttpRoot) {
+    var siteName = strDocument.split('/');
+    var pathDoc = ""; //siteName[siteName.length - 1];
+    var tempRoot = strhttpRoot.split('/');
+    var alreadyCheckSiteName = false;
+    if (tempRoot[tempRoot.length - 2] == "") {
+        pathDoc = strhttpRoot + strDocument;
+    }
+    else {
+        for (temp = 0; temp <= siteName.length - 1; temp++) {
+            if (alreadyCheckSiteName) {
+                pathDoc += "/" + siteName[temp]
+            }
+            else if (siteName[temp] == tempRoot[tempRoot.length - 1] && alreadyCheckSiteName == false) {
+                alreadyCheckSiteName = true;
+            }
+
+            //pathDoc = siteName[siteName.length - temp] + "/" + pathDoc;
+        }
+        pathDoc = strhttpRoot + pathDoc;
+    }
+    return pathDoc;
+}
+
+
+function getParameters(fileName, fsListId) {
+    var params = "";
+    //var listIdObject = document.getElementById("ctl00_PlaceHolderMain_idList");//ctl00_PlaceHolderPageTitleInTitleArea_idList// for 2007
+    var id = SetParaForRequest(fileName, "id");
+    var listId = SetParaForRequest(ctx.displayFormUrl, "listid");
+    if (listId.length >= 0 && listId.indexOf("&ListId") >= 0) {
+        listId = listId.replace("&ListId", "ListId");
+        params += listId + "&FilePath=" + encodeURIComponent(fileName) + id; //
+    }
+    else
+        params += "ListId=" + listId + "&FilePath=" + encodeURIComponent(fileName) + id; //
+    return params;
+}
+function MyEventClass(myEventObj) {
+    //this.myEventObj = myEventObj;
+    this.cancelBubble = myEventObj.cancelBubble;
+}
+
+function BringFileToListFS(idList) {
+    var itemUrl = this.currentItemFileUrl;
+    var ctxTemp = ctx;
+    if (currentCtx != null) {
+        ctx = currentCtx;
+    }
+    itemUrl = itemUrl.toString();
+
+    itemUrl = encodeURI(itemUrl);
+    itemUrl = UrlFullEncode(itemUrl);
+
+    var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/HandleDataToShow.ashx?ListId=' + idList + '&FilePath=' + itemUrl + '';
+    try {
+        //debugger;
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 1) {
+                    alert(data.responseText);
+                    this.status = "done";
+                    return false;
+                }
+                else {
+                    this.status = "done";
+                    OnRefreshPage(window.location.href);
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+
+    this.status = "Loading content of file...";
+    ctx = ctxTemp;
+}
+
+function LocateLostItemsInFS(idList) {
+    var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/LocateLostItems.ashx?ListId=' + idList + '';
+    try {
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText != "") {
+                    alert(data.responseText);
+                }
+                document.location.reload();
+            }
+        });
+
+    } catch (e)
+    { }
+    this.status = "Locate Lost Items...";
+}
+function SyncFolderImmediately(idList, urlSource) {
+    urlSource = ctx.HttpRoot;
+    var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/SyncFilesImmediately.ashx?ListId=' + idList + '&urlSource=' + urlSource + '';
+    try {
+
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText != "") {
+                    {
+                        alert(data.responseText);
+                    }
+
+                }
+                window.location.href = window.location.href;
+            }
+        });
+
+    } catch (e)
+    { }
+
+    this.status = "Synchron...";
+}
+
+function EnableButtonUpload() {
+    var result = false;
+
+    var listGuid = SP.ListOperation.Selection.getSelectedList();
+    var clientContext = new SP.ClientContext();
+    var web = clientContext.get_web();
+    if (web.doesUserHavePermissions(SP.PermissionKind.editListItems)) {
+        result = true;
+    }
+
+
+    return result;
+}
+function DisableExplorer() {
+    return false;
+}
+
+///Enable button setting File Share
+
+var status;
+function checkEnableButtonFileShare() {
+    // debugger;
+    var result = false;
+    if (this.status == null || this.status == "")
+        checkifUserHasEditPermissions();
+    else if (this.status == "complete") {
+        result = true;
+    }
+    this.status = "";
+    return result;
+}
+
+
+function checkifUserHasEditPermissions() {
+    context = new SP.ClientContext.get_current();
+    web = context.get_web();
+    this._currentUser = web.get_currentUser();
+    context.load(this._currentUser);
+    context.load(web, 'EffectiveBasePermissions');
+    context.executeQueryAsync(Function.createDelegate(this, this.onSuccessMethod), Function.createDelegate(this, this.onFailureMethod));
+}
+
+function onSuccessMethod(sender, args) {
+    /*	 Manage Lists*/
+    if (web.get_effectiveBasePermissions().has(SP.PermissionKind.manageLists)) {
+        //User Has Edit Permissions
+        this.status = "complete";
+        //debugger;
+        RefreshCommandUI();
+    }
+    else {
+        this.status = "uncomplete";
+    }
+}
+
+function onFailureMethod(sender, args) {
+    this.status = "uncomplete";
+}
+
+//Check Permission for button Upload
+
+var statusUpload;
+function checkEnableButtonUpload() {
+    // debugger;
+    if (this.statusUpload == null || this.statusUpload == "")
+        checkifUserHasEditListItemPermissions();
+    else if (this.statusUpload == "complete") {
+        result = true;
+    }
+    this.statusUpload = "";
+    return result;
+}
+
+
+function checkifUserHasEditListItemPermissions() {
+    context = new SP.ClientContext.get_current();
+    web = context.get_web();
+    this._currentUser = web.get_currentUser();
+    context.load(this._currentUser);
+    context.load(web, 'EffectiveBasePermissions');
+    context.executeQueryAsync(Function.createDelegate(this, this.onSuccessCheckEditListItemPermissionsMethod), Function.createDelegate(this, this.onFailureCheckEditListItemPermissionsMethod));
+}
+
+function onSuccessCheckEditListItemPermissionsMethod(sender, args) {
+    /*	 Manage Lists*/
+    if (web.get_effectiveBasePermissions().has(SP.PermissionKind.editListItems)) {
+        //User Has Edit Permissions
+        this.statusUpload = "complete";
+        //debugger;
+        RefreshCommandUI();
+
+    }
+    else {
+        this.statusUpload = "uncomplete";
+    }
+}
+
+function onFailureCheckEditListItemPermissionsMethod(sender, args) {
+    this.statusUpload = "uncomplete";
+}
+var itemImport;
+function EnableMarkImportItem() {
+    try {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var ci = CountDictionary(items);
+        if (ci <= 0) return false;
+        return EnableImportRibbon(items);
+    }
+
+    catch (e) {
+        return false;
+    }
+
+}
+
+function EnableImportRibbon(items) {
+    try {
+        //4_bambooStatus
+        var enableImport = false;
+        for (var itemIndex = 0; itemIndex <= items.length - 1; itemIndex++) {
+            try {
+                if (enableImport === true) break;
+                var fsItem = items[itemIndex];
+                var idItem = "#" + items[itemIndex].id + "_bambooStatus";
+                var srcImage = jq142HW60(idItem).attr("src");
+                var status = "";
+                if (typeof (srcImage) != "undefined") {
+                    var strTemp = srcImage.split(";");
+                    status = strTemp[1];
+                    if (status != "InDocumentLibrary" && status != "LostStatus" && status != "LostStatusFolder") {
+                        enableImport = true;
+                    }
+                }
+                else {
+                    enableImport = true;
+                }
+            }
+            catch (ex) {
+                enableImport = true;
+            }
+        }
+    }
+    catch (e) {
+        enableImport = true;
+    }
+    return enableImport;
+}
+
+function GetEnabledImport(idItem) {
+    var idList = _spPageContextInfo.pageListId;
+    var context = SP.ClientContext.get_current();
+    if (window.FolderStatusValue === undefined) {
+        window.FolderStatusValue = new Array();
+    }
+
+    if (window.FolderStatusValue[idItem] === undefined) {
+        this.itemImport = context.get_web().get_lists().getById(idList).getItemById(idItem);
+        context.load(itemImport);
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryMarkImportItem), Function.createDelegate(this, this.onQueryFailed));
+        return false;
+    }
+    return window.FolderStatusValue[idItem];
+}
+function onQueryMarkImportItem() {
+    try {
+
+        var selecteditems = SP.ListOperation.Selection.getSelectedItems();
+        var itemTmp = selecteditems[0];
+        var ItemId = itemTmp.id;
+        var temp = this.itemImport.get_item('Status_Info');
+        if (temp != "InDocumentLibrary" || (itemTmp.fsObjType == 1 && temp == null)) {
+            if (temp == "LostStatus") {
+                window.FolderStatusValue[ItemId] = false;
+            }
+            else {
+                window.FolderStatusValue[ItemId] = true; //Enable Ribbon button
+                RefreshCommandUI();
+            }
+        }
+        else {
+            window.FolderStatusValue[ItemId] = false; //Disable Ribbon button
+        }
+    }
+    catch (e) {
+        window.FolderStatusValue[ItemId] = false;
+    }
+}
+function EnableMarkExportItem() {
+
+    try {
+        var items = SP.ListOperation.Selection.getSelectedItems();
+        var ci = CountDictionary(items);
+        if (ci <= 0) return false;
+        return EnableExportRibbon(items);
+    }
+    catch (e) {
+
+        return false;
+    }
+}
+
+
+function EnableExportRibbon(items) {
+    try {
+        //4_bambooStatus
+        var enableExport = false;
+        for (var itemIndex = 0; itemIndex <= items.length - 1; itemIndex++) {
+            try {
+                if (enableExport === true) break;
+                var fsItem = items[itemIndex];
+                var idItem = "#" + items[itemIndex].id + "_bambooStatus";
+                var srcImage = jq142HW60(idItem).attr("src");
+                var status = "";
+                if (typeof (srcImage) != "undefined") {
+                    var strTemp = srcImage.split(";");
+                    status = strTemp[1];
+                    if (status == "InDocumentLibrary") {
+                        enableExport = true;
+                    }
+                }
+            }
+            catch (ex) {
+                enableExport = true;
+            }
+        }
+    }
+    catch (e) {
+        enableExport = true;
+    }
+    return enableExport;
+}
+
+var itemExport;
+
+function GetEnabledExport(idItem) {
+    if (window.FolderStatusExport === undefined) {
+        window.FolderStatusExport = new Array();
+    }
+    if (window.FolderStatusExport[idItem] === undefined) {
+        var idList = _spPageContextInfo.pageListId;
+        var context = SP.ClientContext.get_current();
+        this.itemExport = context.get_web().get_lists().getById(idList).getItemById(idItem);
+        context.load(itemExport, 'Status_Info');
+        context.executeQueryAsync(Function.createDelegate(this, this.onQueryMarkExportItem), Function.createDelegate(this, this.onQueryFailed));
+        return false;
+    }
+    return window.FolderStatusExport[idItem];
+}
+function onQueryMarkExportItem() {
+    try {
+        var selecteditems = SP.ListOperation.Selection.getSelectedItems();
+        var ItemId = selecteditems[0].id;
+        var temp = this.itemExport.get_item('Status_Info');
+        if (temp == "InDocumentLibrary") {
+            window.FolderStatusExport[ItemId] = true; //Enable Ribbon button
+            RefreshCommandUI();
+        }
+        else {
+            window.FolderStatusExport[ItemId] = false; //Disable Ribbon button
+        }
+    }
+    catch (e) {
+        window.FolderStatusExport[ItemId] = false;
+    }
+
+}
+function MarkFileExportRibbon(ListId) {
+    var items = SP.ListOperation.Selection.getSelectedItems();
+    var idList = SP.ListOperation.Selection.getSelectedList();
+    var ci = CountDictionary(items);
+    var idItemMarkFiles = "";
+    var idFolderMarkfiles = "";
+    for (itemIndex = 0; itemIndex < ci; itemIndex++) {
+        var itemMarkFile = items[itemIndex];
+        if (itemMarkFile.fsObjType == "0")// fsObjType==0: file; fsObjType=1: folder
+        {
+            idItemMarkFiles += itemMarkFile.id + ";";
+        }
+        else {
+            idFolderMarkfiles += itemMarkFile.id + ";";
+        }
+    }
+    //if (idFolderMarkfiles.length > 0) {
+    //    alert('Can not mark export folder');
+    //    return;
+    //}
+    try {
+
+        if (statusId != '') {
+            SP.UI.Notify.removeNotification(statusId);
+            statusId = SP.UI.Notify.addNotification("Exporting Files...", false, "", null);
+            return;
+        }
+        statusId = SP.UI.Notify.addNotification("Exporting Files...", false, "", null);
+        var sourceUrl = window.location.href;
+        var RootFolder = GetRootFolder(ctx);
+
+
+        var listId = ctx.listName;
+        var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/RibbonMarkFileExport.ashx?ListId=' + idList + "&idItems=" + idItemMarkFiles + "&idFolders=" + idFolderMarkfiles;
+        jq142HW60.ajax({
+            url: urlrequest,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 1) {
+                    alert(data.responseText);
+                    OnRefreshPage(sourceUrl);
+                }
+                OnRefreshPage(sourceUrl);
+            }
+        });
+
+    } catch (e)
+    { }
+}
+function MarkFileExportECBMenu(ListId, idItem) {
+    var ctxTemp = ctx;
+    if (currentCtx != null) {
+        ctx = currentCtx;
+    }
+    var url = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/RibbonMarkFileExport.ashx?ListId=' + ListId + "&idItems=" + idItem + "&idFolders=";
+    try {
+        //debugger;
+        jq142HW60.ajax({
+            url: url,
+            cache: false,
+            complete: function (data) {
+                if (data.responseText.length > 1) {
+                    alert(data.responseText);
+                    this.status = "done";
+                    return false;
+                }
+                else {
+                    this.status = "done";
+                    OnRefreshPage(window.location.href);
+                }
+            }
+        });
+
+    } catch (e)
+    { }
+
+    this.status = "Exporting Files...";
+    ctx = ctxTemp;
+}
+
+var itemExportImport;
+var fileUrl;
+function MenuExportImportFS(ListId, idItem) {
+    var idList = _spPageContextInfo.pageListId;
+    var context = SP.ClientContext.get_current();
+    this.itemExportImport = context.get_web().get_lists().getById(idList).getItemById(idItem);
+    this.fileUrl = this.currentItemFileUrl;
+    context.load(itemExportImport, 'Status_Info', 'Id');
+    context.executeQueryAsync(Function.createDelegate(this, this.onQueryExportImportItem), Function.createDelegate(this, this.onQueryFailed));
+}
+function onQueryExportImportItem() {
+    try {
+        var idList = _spPageContextInfo.pageListId;
+        var ItemId = this.itemExportImport.get_id();
+        var temp = this.itemExportImport.get_item('Status_Info');
+
+        if (temp == "InDocumentLibrary") {
+            MarkFileExportECBMenu(idList, ItemId);
+        }
+        else {
+            this.currentItemFileUrl = this.fileUrl;
+            BringFileToListFS(idList);
+        }
+    }
+    catch (e) {
+    }
+
+}
+function OnRefreshPage(urlBack) {
+    if (SP.ClientSchemaVersions.currentVersion == "15.0.0.0") {
+        var hashIndex = urlBack.search("#");
+
+        if (hashIndex == -1) {
+            window.location.href = urlBack;
+        } else {
+            var hashStr = urlBack.substring(hashIndex + 1);
+            var newurl = urlBack.substring(0, hashIndex);
+            window.location = urlBack;
+            window.location.reload();
+        }
+    }
+    else {
+        window.location.href = urlBack;
+    }
+}

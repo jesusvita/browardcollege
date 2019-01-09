@@ -2,16 +2,71 @@
 
 
 {% block content %}
-<form method="POST" action="" autocomplete="off">
-	{% csrf_token %}
- 	<div class="justify-content-center w-90">
-		<div class="input-group mb-3 justify-content-center">
+	<form action="/login" autocomplete="off">
+				{% csrf_token %}
+
+						<div class="col fl-panel" id="login" style="width:260px; height: 410px; margin-right:10px">
+						<!-- Congratulations on bringing CAS online!  The default authentication handler authenticates where usernames equal passwords: go ahead, try it out.  -->
+								<h2>
+
+
+
+											Enter your Student ID and Password
+
+
+								</h2>
+								<div class="row fl-controls-left">
+										<label for="username" class="fl-label">
+
+
+
+												<span class="accesskey">S</span>tudent ID:
+
+
+										</label>
+
+
+
+				<input id="username" name="username" value="{{form.username}}" size="24" maxlength="9" autocomplete="off">
+
+
+					<br>Student ID's are alpha numeric<br>(i.e. A12345678)
+
+								</div>
+
+								<div class="row fl-controls-left">
+										<label for="password" class="fl-label"><span class="accesskey">P</span>assword:</label>
+
+
+
+
+
+
+			<input id="password" name="password" value="{{form.password}}" TYPE="PASSWORD" size="25" maxlength="6" autocomplete="off">
+
+
+	<br>Your PIN is initially set to your two digit birth month and four digit birth year (MMYYYY).
+
+</div>
+
+
+<!-- div class="row check">
+	<input id="warn" name="warn" value="true" tabindex="3" accesskey="w" type="checkbox" />
+	<label for="warn"><span class="accesskey">W</span>arn me before logging me into other sites.</label>
+</div -->
+<div class="row btn-row">
+<input class="btn d-flex justify-content-center mx-auto" style="background-color: blue; color: white; width:100px;" type="submit" value="Submit">
+</div>
+</div>
+ 	<!-- <div class="justify-content-center w-90">
+		<div class="input-group mb-3 ">
 			<div class="input-group-prepend mr-1 ">
 					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Teppan</span>
 			</div>
 			<div class="input-group-prepend">
-					{{form.teppan.errors}}
-					{{form.teppan}}
+					{{form.username.errors}}
+					{{form.username}}
+					<input id="your_name" type="text" name="your_name" value="{{form.username}}">
 			</div>
 		</div>
 
@@ -20,33 +75,12 @@
 					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Sushi</span>
 			</div>
 			<div class="input-group-prepend float-right">
-					{{form.sushi.errors}}
-					{{form.sushi}}
+					{{form.password.errors}}
+					{{form.password}}
+					<input id="your_name" type="text" name="your_name" value="{{form.password}}">
 			</div>
 		</div>
 
-		<div class="input-group mb-3 justify-content-center">
-			<div class="input-group-prepend mr-1">
-					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Bar</span>
-			</div>
-			<div class="input-group-prepend">
-					{{form.bar.errors}}
-					{{form.bar}}
-			</div>
-		</div>
-
-		<div class="input-group mb-3 justify-content-center">
-
-			<div class="input-group-prepend mr-1">
-					<span class="input-group-text justify-content-center" style="background-color:#d8111b; color:#fff; width:70px;" id="inputGroup-sizing-default">Tip</span>
-			</div>
-			<div class="input-group-prepend">
-
-					{{form.tip.errors}}
-					{{form.tip}}
-			</div>
-
-		</div>
 	</div>
 
 
@@ -54,7 +88,7 @@
 		<hr style="border-color:rgba(242,0,0,1.00);">
 		<div class="mx-auto text-center" style="width: 70%;">
 		<p class="" style="font-size: 0.9rem;"> If you don't know how much tip you got just leave it blank </p>
-		</div>
+		</div> -->
 </form>
 
 {% endblock %}

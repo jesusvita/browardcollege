@@ -1,0 +1,23 @@
+function showImage(bccHeaderImages) {
+// To add more image files, continue with the
+// pattern below, adding to the array.
+var theImages = new Array() // do not change this
+theImages[0] = bccHeaderImages+'/main_pic01.jpg';
+theImages[1] = bccHeaderImages+'/main_pic02.jpg';
+theImages[2] = bccHeaderImages+'/main_pic03.jpg';
+theImages[3] = bccHeaderImages+'/main_pic04.jpg';
+theImages[4] = bccHeaderImages+'/main_pic05.jpg';
+theImages[5] = bccHeaderImages+'/main_pic06.jpg';
+theImages[6] = bccHeaderImages+'/main_pic07.jpg';
+theImages[7] = bccHeaderImages+'/main_pic08.jpg';
+theImages[8] = bccHeaderImages+'/main_pic09.jpg';
+theImages[9] = bccHeaderImages+'/main_pic10.jpg';
+theImages[10] = bccHeaderImages+'/main_pic11.jpg';
+theImages[11] = bccHeaderImages+'/main_pic12.jpg';
+
+// do not edit anything below this line
+
+var p = theImages.length;
+var whichImage = Math.round(Math.random()*(p-1));
+document.write('<img src="'+theImages[whichImage]+'" alt="Rotating Header Image"">');
+}

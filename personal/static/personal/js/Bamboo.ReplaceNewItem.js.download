@@ -1,0 +1,205 @@
+try {
+    jq142HW60(document).ready(function LicenseStatus() {
+        try {
+            var versionLinKId = jq142HW60("[id$='onetidListEdit1']").attr("Id"); //document.getElementById("ctl00_PlaceHolderMain_ctl09_RptControls_onetidListEdit1");
+            if (versionLinKId != null && versionLinKId != undefined) {
+                var versionning = document.getElementById(versionLinKId);
+                var mySettingId = jq142HW60("[id$='Bamboosolutions.FileShareLibrary.MappingLocalFolder']").attr("Id");
+                var mySetting;
+                if (mySettingId != null && mySettingId != undefined)
+                    mySetting = document.getElementById(mySettingId);
+                if (versionning != null && mySetting != null) {
+                    versionning.style.display = "none";
+                    versionning.parentElement.parentElement.style.display = "none";
+                }
+            }
+            //                var versionning = document.getElementById("ctl00_PlaceHolderMain_ctl09_RptControls_onetidListEdit1");        
+            //                  if (versionning == null)
+            //                versionning = document.getElementById("ctl00_PlaceHolderMain_ctl08_RptControls_onetidListEdit1");
+            //            var mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl09_ctl01_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            //            if (mySetting == null) {
+            //                mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl08_ctl01_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            //                if (mySetting == null)
+            //                    mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl09_ctl00_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            //                if (mySetting == null)
+            //                    mySetting = document.getElementById("ctl00_PlaceHolderMain_ctl08_ctl00_RptControls_Bamboosolutions.FileShareLibrary.MappingLocalFolder");
+            //            }
+
+            //            if (versionning != null && mySetting != null) {
+            //                versionning.style.display = "none";
+            //                versionning.parentElement.parentElement.style.display = "none";
+            //            }
+            var urlCurrent = window.location.href.toLowerCase()
+            if (ctx.listTemplate != '15000') { // fix bugs that cannot upload on non-default view.
+                return false;
+            }
+            var sourceUrl = window.location.href;
+            var listId = ctx.listName;
+            var urlrequest = ctx.HttpRoot + '/_layouts/Bamboo.FileShareLibrary/MessageHandler.ashx?ListId=' + listId + '&Source=' + sourceUrl;
+            jq142HW60.ajax({
+                url: urlrequest,
+                cache: false,
+                complete: function (data) {
+                    if (data.responseText.length > 0) {
+                        messageBB = data.responseText;
+                        eval("ExecuteOrDelayUntilScriptLoaded(ShowMessage, 'SP.js');");
+                    }
+                }
+
+            });
+
+        } catch (e)
+        { }
+    });
+}
+catch (e)
+{ alert(e); }
+
+try {
+
+    _spBodyOnLoadFunctionNames.push("ReplaceLinkNewItem60");
+}
+catch (e)
+{ }
+function ReplaceLinkNewItem60() {
+    try {
+        var urlCurrent = window.location.href.toLowerCase()
+        if (ctx.listTemplate != '15000') {
+            return false;
+        }
+
+        //setTimeout("ReplaceNewItem()", 500);
+        ReplaceNewItem();
+
+        //var sourceUrl = window.location.href;
+        //var listId = ctx.listName;
+        //var urlrequest = ctx.HttpRoot;
+        //jq142HW60.ajax({
+        //    url: urlrequest,
+        //    cache: true,
+        //    complete: function (data) {
+        //        ReplaceNewItem();
+        //    }
+        //});
+    } catch (e)
+    { }
+};
+function ReplaceContentFSSearchResult() {
+    try {
+        var urlCurrent = window.location.href.toLowerCase()
+        if (urlCurrent.indexOf("/osssearchresults.aspx") <= 0) {
+            return false;
+        }
+
+        buttonSearch = jq142HW60('[id$=_SearchLink]');
+        jq142HW60('[id$=_SearchLink]').removeAttr('onclick');
+
+        jq142HW60('[id$=_SearchLink]').click(function () {
+            $getClientControl(this).search($get('ctl00_PlaceHolderMain_ctl00_csr_sbox').value);
+            // debugger;
+            var divResult = jq142HW60('#Groups');
+
+            alert('vovov');
+        });
+        var divcontent = jq142HW60('div[id$=_item_itemSummary]').text();
+        //alert(divcontent)
+    }
+    catch (e) {
+
+        alert(e);
+    }
+}
+
+var bbCount = 0;
+function ReplaceNewItem() {
+    //"idHomePageNewItem"
+    var arrayHttp = ctx.HttpRoot.split('/');
+    var sourceUrl = window.location.href;
+    var siteUrl = arrayHttp[0] + "//" + arrayHttp[2];
+    var myUrl = ctx.HttpRoot + "/_layouts/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.Upload.aspx?"; //List=" + listId + rootfld + "&Source=" + sourceUrl;
+    //var myUrl = "/_layouts/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.Upload.aspx?"; //List=" + listId + rootfld + "&Source=" + sourceUrl;
+    //myUrl = "http://huy2k8server/HW60/_layouts/Bamboo.FileShareLibrary/UploadFile/Bamboo.FileShare.CheckIn.aspx?List={B75F7D3A-8A0B-4A8D-A6FF-FFD7EB8789E6}&FileName=/HW60/test fs 2/How to import User Profile From AD to SP2010.docx&Source=http://huy2k8server/HW60/test%20fs%202/Forms/AllItems.aspx";
+
+
+    var temp = jq142HW60("a[id*='idHomePageNew']").attr("href"); // "http://huy2k8server/HW60/HW60_sub1/_layouts/Upload.aspx?List={36E80187-B635-472B-A0A0-91B40FDF15E9}&RootFolder="
+    temp = String(temp).toLowerCase();
+    if (temp.indexOf("bamboo.fileshare.upload.aspx") > 0 || bbCount >= 5) {
+        return;
+    }
+    bbCount++;
+    //fix this for binding to web app server
+    var temparrayHttp;
+    if (temp != '#' && temp != "undefined") {
+        arrayHttp = temp.split("?");
+        temparrayHttp = arrayHttp[1];
+    }
+    else {
+        var rootfolder = GetQueryStringParams(sourceUrl, 'RootFolder');
+        if (rootfolder != "")
+            temparrayHttp = 'list=' + ctx.listName + '&' + rootfolder;
+        else
+            temparrayHttp = 'list=' + ctx.listName + '&rootfolder=' + rootfolder;
+    }
+    //jq142HW60("#idHomePageNewItem").attr("href").value= myUrl + "?" + arrayHttp[1] +  "&Source=" + sourceUrl;
+    var rootFolderWeb = "&rootFolderWeb=" + ctx.listUrlDir;
+    //myUrl = myUrl + arrayHttp[1] + "&dlg=1&IsDlg=1"+ rootFolderWeb+"&Source=" + UrlFullEncode(sourceUrl);
+    myUrl = myUrl + temparrayHttp + "&dlg=1&IsDlg=1" + rootFolderWeb + "&Source=" + UrlFullEncode(sourceUrl);
+    if (jq142HW60("a[id*='idHomePageNew']").length > 0) {
+
+        var cloneNewItem = jq142HW60("a[id*='idHomePageNew']").clone();
+        cloneNewItem.attr("Id", "idHomePageNew-Bamboo");
+        cloneNewItem.attr("href", myUrl);
+        cloneNewItem.removeAttr("target");
+        cloneNewItem.removeAttr("onclick");
+        cloneNewItem.click(function () {
+            //alert('vvovo');
+            BBShowPopUP(myUrl);
+            return false;
+        });
+        //ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften
+        jq142HW60("a[id*='idHomePageNew']").remove();
+        //jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").html(cloneNewItem);
+        //jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").parent().append(cloneNewItem);
+        if (jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").length >= 1)
+            jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").html(cloneNewItem);
+        else
+            jq142HW60("td[class='ms-addnew']").html(cloneNewItem);
+
+    }
+    else {
+        //debugger;
+        var cloneNewItem = jq142HW60("a[id*='js-newdocWOPI']").clone();
+        cloneNewItem.attr("Id", "idHomePageNew-Bamboo");
+        cloneNewItem.attr("href", myUrl);
+        cloneNewItem.removeAttr("target");
+        cloneNewItem.removeAttr("class");
+        cloneNewItem.removeAttr("onclick");
+        cloneNewItem.click(function () {
+            //alert('vvovo');
+            BBShowPopUP(myUrl);
+            return false;
+        });
+        jq142HW60("a[id*='js-newdocWOPI']").remove();
+        //jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").html(cloneNewItem);
+        if (jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").length >= 1)
+            jq142HW60("td[class='ms-list-addnew ms-textXLarge ms-list-addnew-aligntop ms-soften']").html(cloneNewItem);
+        else
+            jq142HW60("td[class='ms-addnew']").html(cloneNewItem);
+
+
+    }
+    setTimeout("ReplaceNewItem()", 300);
+}
+
+function GetQueryStringParams(sourceUrl, sParam) {
+    var sPageURL = sourceUrl;
+    var rootFolder = "";
+    var sURLVariables = sPageURL.split('?');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('&');
+        if (sParameterName[0].indexOf(sParam) != -1) {
+            rootFolder = sParameterName[0];
+        }
+    }
+    return rootFolder;
+}

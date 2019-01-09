@@ -1,0 +1,77 @@
+/*
+	!!! DEPENDS ON JQUERY CORE
+	Erik Toussaint
+*/
+var menuClass;
+if (!menuClass){
+	menuClass= 'topmenu';  
+}
+$(document).ready(function()
+{	
+	$('.'+menuClass+' li').bind('mouseover', 
+		function(){
+			var timer= $(this).parents('.'+menuClass+':eq(0)').data('timer');
+			if(timer)
+		   	{  
+		     	window.clearTimeout(timer);
+		      	timer = null;
+		   	}
+		   	$(this).parents('.'+menuClass+':eq(0)').data('timer',timer);
+		   	
+			$(this).find('> ul').show();
+			$(this).siblings('li').find('ul').hide();
+			
+			var parent= $(this);
+			var aPadding= 0;
+			if ($.browser.msie){
+				aPadding= parseInt(parent.find('a').css("padding-left"));
+			}
+			if (parent.parent('.'+menuClass).size()=== 0){
+				$(this).find('> ul').css({
+					'position':'absolute',
+					'top':-1,
+					'left':parent.parent('ul').innerWidth()- aPadding
+				});
+			}
+			if ($(this).hasClass('topmenu_left')){
+				$(this).find('> ul').css({
+					'position':'absolute',
+					'left': -$(this).find('> ul').innerWidth()+ $(this).innerWidth()- aPadding
+				});
+			}
+		}
+	);
+	$('.'+menuClass).bind('mouseout', 
+		function(){
+			var el= $(this);
+			timer= window.setTimeout(
+		   		function(){
+		   			el.find('li ul').hide('fast');
+		   		}
+		   	, 500);
+		   	el.data('timer', timer);
+		}
+	);
+	
+   	$('.'+menuClass+' li ul li').each(function(){
+   		if ($(this).children('ul').size()> 0){
+   			$(this).find('> a').addClass('hasChildren');
+   		}
+   	});
+   	$('.'+menuClass+' li a').each( 
+		function(){
+			var landingpage = '/FCCSC/menu/menu_landing.jsp?menu='+ $(this).parents('.'+menuClass).attr('id');
+			if ($(this).attr('href')=== '#'){
+				if ($(this).attr('id')){
+					$(this).attr('href',landingpage + '&menuid='+ $(this).attr('id')); 
+				}else{
+					$(this).attr('href',landingpage + '&index='+ $(this).parents('.'+menuClass).find('li a').index($(this)));
+				}
+			}
+		}
+	);
+   	$('.'+menuClass+' li:first').addClass('first');
+   	$('.'+menuClass+' > li').addClass('firstLevel');
+   	
+   	$('.'+menuClass).show();
+});

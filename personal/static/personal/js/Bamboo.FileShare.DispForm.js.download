@@ -1,0 +1,121 @@
+jq142HW60(document).ready(function () {
+    try
+    {
+        SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ReplaceEditItem);
+    } catch (e)
+    { }
+
+});
+var list;
+var item;
+function ReplaceEditItem() {
+    try {
+        var urlCurrent = window.location.href.toLowerCase();
+        var itemId = getQueryStringParameter('ID');
+        var sourceUrl = _spPageContextInfo.webAbsoluteUrl;
+        if (urlCurrent.indexOf("forms/dispform.aspx") > 1 && g_wsaListTemplateId == '15000') {
+            if ((typeof _spPageContextInfo.userId == "undefined") || (_spPageContextInfo.userId === null)) {
+                var checkout = jq142HW60("[id$='BB_Ribbon.ListForm.Display.Manage.CheckOut.ReplacementButton-Large']")[0];
+                var checkIn = jq142HW60("[id$='BB_Ribbon.ListForm.Display.Manage.CheckIn.ReplacementButton-Large']")[0];
+                checkout.style.display = 'none';
+                checkIn.style.display = 'none';
+                var urlrequest = _spPageContextInfo.webAbsoluteUrl + '/_layouts/Bamboo.FileShareLibrary/CheckUrlDispForm.ashx?ListId=' + _spPageContextInfo.pageListId + "&ItemId=" + itemId + "&source=" + sourceUrl;
+                jq142HW60.ajax({
+                    url: urlrequest,
+                    cache: false,
+                    complete: function (data) {
+                        if (data.responseText.length > 1) {
+                            var actions = jq142HW60("[id$='Ribbon.ListForm.Display.Actions']")[0];
+                            actions.style.display = 'none';
+                            if (data.responseText != "InDocumentLibrary") {
+                                jq142HW60("td[id=SPFieldFile] a:only-child").removeAttr("onclick");
+                                jq142HW60("td[id=SPFieldFile] a:only-child").click(function () {
+                                    CheckOpenPg(this.href, _spPageContextInfo.pageListId)
+                                    return false;
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+            else {
+                var ItemID = getQueryStringParameter('ID');
+                var ctxCurrent = new SP.ClientContext.get_current();
+                var oWebsite = ctxCurrent.get_web();
+                item = oWebsite.get_lists().getById(_spPageContextInfo.pageListId).getItemById(ItemID);
+                ctxCurrent.load(item);
+                ctxCurrent.executeQueryAsync(getListSuccess, getListFailure);
+            }
+        }
+    } catch (e)
+    { }
+
+}
+
+
+function getListSuccess() {
+    try {
+        var checkout = jq142HW60("[id$='BB_Ribbon.ListForm.Display.Manage.CheckOut.ReplacementButton-Large']")[0];
+        var checkIn = jq142HW60("[id$='BB_Ribbon.ListForm.Display.Manage.CheckIn.ReplacementButton-Large']")[0];
+        if (item.get_item('FSObjType') == 0) {
+            if (item.get_item('CheckoutUser') != null) {
+                checkout.style.display = 'none';
+                checkIn.style.display = 'block';
+            }
+            else {
+                checkout.style.display = 'block';
+                checkIn.style.display = 'none';
+            }
+            if (item.get_item('Status_Info') != "InDocumentLibrary") {
+                jq142HW60("td[id=SPFieldFile] a:only-child").removeAttr("onclick");
+                jq142HW60("td[id=SPFieldFile] a:only-child").click(function () {
+                    CheckOpenPg(this.href, _spPageContextInfo.pageListId)
+                    return false;
+                });
+            }
+        }
+        else {
+            checkout.style.display = 'none';
+            checkIn.style.display = 'none';
+        }
+    }
+    catch (e) {
+
+    }
+}
+
+function getListFailure(sender, args) {
+    alert('Error: ' + args.get_message());
+}
+
+
+function CheckOpenPg(Loc, listId) {
+    var BambooLink = "/_LAYOUTS/Bamboo.FileShareLibrary/ViewFileInFileShare.ashx?FilePath=";
+    var TheLinkHREF = Loc + "&ListId={" + listId + "}";
+    this.status = "loading file...";
+    jq142HW60.ajax({
+        url: BambooLink + TheLinkHREF,
+        cache: false,
+        success: function (data) {
+            this.status = "Done";
+            if (data == "success") {
+                window.location.href = BambooLink + TheLinkHREF + "&LoadContent=1";
+            }
+            else {
+                window.open(TheLinkHREF);
+                window.location.href = TheLinkHREF;
+            }
+        }
+    });
+}
+
+function getQueryStringParameter(param) {
+    var params = document.URL.split("?")[1].split("&");
+    var strParams = "";
+    for (var i = 0; i < params.length; i = i + 1) {
+        var singleParam = params[i].split("=");
+        if (singleParam[0] == param) {
+            return singleParam[1];
+        }
+    }
+}
